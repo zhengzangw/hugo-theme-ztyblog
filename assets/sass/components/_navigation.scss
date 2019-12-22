@@ -1,0 +1,104 @@
+//Navigation
+.nav-link,
+.nav-item {
+    font-size: .875rem;
+    color: #8492a6;
+}
+
+.nav-brand {
+    font-size: 1.25rem;
+    line-height: inherit;
+    display: inline-block;
+    margin-right: 1rem;
+    padding-top: .0375rem;
+    padding-bottom: .0375rem;
+    white-space: nowrap;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(31, 45, 61, .5);
+    border-color: transparent;
+}
+
+.navbar .dropdown-item {
+    border-width: 0px;
+    border-radius: 0;
+    font-size: .875rem;
+    color: #8492a6;
+    padding: .375rem 0;
+}
+
+.navbar .dropdown-item:first-child {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+//Dropdown
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-menu {
+    font-size: .875rem;
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    display: none;
+    float: left;
+    min-width: 12rem;
+    margin: .125rem 0 0;
+    padding: .35rem 0;
+    list-style: none;
+    text-align: left;
+    color: #8492a6;
+    border: 1px solid #eff2f7;
+    border-radius: .5rem;
+    background-color: #fff;
+    background-clip: padding-box;
+    box-shadow: 0 0 1.25rem rgba(31, 45, 61, .08);
+}
+
+.navbar .dropdown-menu {
+    min-width: 16rem;
+    padding: 1.25rem 1.75rem;
+    border: 0 solid rgba(31, 45, 61, 0);
+    border-radius: .5rem;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(31, 45, 61, .15);
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item {
+    font-weight: 400;
+    display: block;
+    clear: both;
+    width: 100%;
+    padding: .25rem 1rem;
+    text-align: inherit;
+    white-space: nowrap;
+    color: #8492a6;
+    border: 0;
+    background-color: transparent;
+}
+
+.navbar .dropdown-item:active {
+    background: none;
+    background-color: none;
+}
+
+.navbar .dropdown-item:hover {
+    background: none;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-expand-lg .navbar-nav:not(.flex-row) .dropdown-menu {
+        min-width: auto;
+        box-shadow: none;
+        background-color: #eff2f7!important;
+    }
+}

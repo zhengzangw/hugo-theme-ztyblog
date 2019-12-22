@@ -1,0 +1,313 @@
+body {
+  font-weight: 400;
+}
+
+p {
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.article-container {
+  border: 1px solid #e0e0e0;
+  padding: 3.5em 3em 2em 3em;
+  max-width: 768px;
+}
+
+.navbar {
+  background-color: #444444;
+  color: #eeeeee;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+  min-height: 40px;
+}
+
+.navbar a {
+  color: white;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.navbar-nav li a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar-brand {
+  height: 40px;
+  padding: 10px 10px;
+  padding-left: 1em;
+}
+
+.nav li a:hover {
+  background-color: #666;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+  min-height: 50px;
+}
+
+
+/*********************************************************************
+
+The styles below are obtained (and modified) from WiTeX:
+https://github.com/AndrewBelt/WiTeX
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+For more information, please refer to <http://unlicense.org/>
+*********************************************************************/
+
+/* Latin Modern (LaTeX default) font */
+
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/lmroman10-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-weight: bold;
+  font-style: normal;
+  src: url('fonts/lmroman10-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-weight: normal;
+  font-style: italic;
+  src: url('fonts/lmroman10-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-weight: bold;
+  font-style: italic;
+  src: url('fonts/lmroman10-bolditalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Mono';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/lmmono10-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Mono';
+  font-weight: normal;
+  font-style: italic;
+  src: url('fonts/lmmono10-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Sans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/lmsans10-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Latin Modern Sans';
+  font-weight: normal;
+  font-style: bold;
+  src: url('fonts/lmsans10-bold.woff') format('woff');
+}
+
+
+/* Page Layout */
+
+.article {
+  font-size: 12.5pt;
+  font-family: 'Latin Modern Roman', '华文宋体', 'STSongti', 'SimSun', 'Serif';
+  color: black;
+}
+
+.article h1, h2, h3, h4, h5, h6 {
+  font-family: 'Latin Modern Sans', 'STHeiti', 'SimHei', 'Sans Serif';
+  border: none;
+  font-weight: bold;
+}
+
+.article a, .article a:visited {
+  text-decoration: underline;
+}
+.article ul {
+  list-style: disc;
+}
+
+.article {
+  text-align: justify;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  line-height: 1.65em;
+}
+
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6, div#content h1, div#content h2, div#content #firstHeading {
+  line-height: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.article h1, div#content h1 {
+  font-size: 2em;
+}
+
+.article h2, div#content h2 {
+  font-size: 1.45em;
+}
+
+.article h3 {
+  font-size: 1.2em;
+}
+
+.article h4 {
+  font-size: 1.1em;
+}
+
+.article h5, .article h6 {
+  font-size: 1.0em;
+}
+
+.article p {
+  text-indent: 2em;
+  margin-bottom: 10px;
+}
+
+.article li p {
+  text-indent: 0em;
+  margin-bottom: 0px;
+}
+
+table.ambox {
+  margin-bottom: 1em;
+}
+
+dl dd {
+  /* center definitions (most useful for display equations) */
+  text-align: center;
+}
+
+/* Table of Contents */
+
+.toc {
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+.toc ul {
+  margin-left: -1em;
+}
+
+/* Figures */
+
+div.tright {
+  margin: 0.5em 0 0.5em 1.5em;
+}
+
+div.tleft {
+  margin: 0.5em 1.5em 0.5em 0;
+}
+
+code {
+  font-size: 80%;
+  color: black;
+  background-color: #f0f0f0;
+}
+
+.article pre {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.article code {
+  font-size: 14px;
+}
+
+.article blockquote p {
+  text-indent: 0em;
+}
+
+.article blockquote {
+  margin-bottom: 10px;
+}
+
+.fenced {
+  padding: 0px 14px 0px 14px;
+  margin-left: 3em;
+  margin-right: 3em;
+  margin-bottom: 14px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  color: #c09853;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.fenced h4 {
+  border-bottom: 1px solid #c09853;
+}
+.fenced li {
+  margin-left: 0em;
+}
+.fenced p {
+  text-indent: 0em;
+  margin-top: 5px;
+  margin-top: 5px;
+}
+.fenced-green {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.fenced-green h4 {
+  border-bottom: 1px solid #468847;
+}
+.fenced-red {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+.fenced-red h4 {
+  border-bottom: 1px solid #b94a48;
+}
+.fenced-blue {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.fenced-blue h4 {
+  border-bottom: 1px solid #3a87ad;
+}
+
+sup {
+  text-indent: 0;
+}
+
+.katex { font-size: 1.0em; }
+
+.watermark {
+  position: fixed;
+  opacity: 0.1;
+  font-size: 128px;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.textimg {
+  height: 18px;
+}

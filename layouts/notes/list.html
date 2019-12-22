@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body style="overflow-x: unset;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2 bd-sidebar d-print-none">
+                {{ partial "notes-header" . }}
+                {{ partial "notes-sidebar" . }}
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 d-print-block">
+                <div class="row">
+                    <main class="col-12 col-md-10 col-lg-9 py-md-3 pl-md-5 bd-content" role="main">
+                        <div id="title" class="my-4 border-bottom">
+                            <h2>{{ .Title }}</h2>
+                            {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="fad fa-link"></i></a>${3}` | safeHTML }}
+                        </div>
+                        <div class="list-group">
+                            {{ range .Pages.ByWeight }}
+                            <a class="list-group-item" href="{{ .RelPermalink }}">
+                                {{ .Title }}
+                                {{ if eq .Kind "section" }}
+                                <span class="float-right">{{ len .Pages }} 篇</span>
+                                {{ else }}
+                                <span class="float-right">
+
+                                </span>
+                                {{ end }}
+                            </a>
+                            {{ end }}
+                        </div>
+                    </main>
+                    <div class="d-none d-lg-block col-lg-3 bd-toc d-print-none">
+                        {{ partial "notes-func" . }}
+                        {{ .TableOfContents }}
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

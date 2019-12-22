@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{ partial "single-header.html" . }}
+<div id="content" class="my-3">
+  <div class="container">
+    <div class="row row-grid justify-content-center">
+      {{ if .TableOfContents }}
+      <div class="col col-12 col-lg-4 d-print-none">
+        <div id="toc" class="card w-100">
+          <h4 class="card-header">目录</h4>
+          <div class="card-body">
+            {{ .TableOfContents }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      <div class="col col-12 col-lg-8">
+        <div class="card border-0 shadow-none">
+          <div class="card-body">
+            {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+          </div>
+          <div class="card-footer">
+            <div class="post-nav">
+              {{ with .PrevInSection }}
+              <a class="next-post" href="{{ .Permalink }}">
+                <span class="post-nav-label"><i class="iconfont icon-back-arrow-"></i> 上一篇</span><br><span>{{ .Title }}</span>
+              </a>
+              {{ end }}
+              {{ with .NextInSection }}
+              <a class="prev-post" href="{{ .Permalink }}">
+                <span class="post-nav-label">下一篇 <i class="iconfont icon-back-arrow-reverse"></i></span><br><span>{{ .Title }}</span>
+              </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

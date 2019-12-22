@@ -1,0 +1,88 @@
+#ntp-contents {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#fakebox-container {
+    margin: 0 auto 0 auto;
+    min-width: 410px;
+    width: 50%;
+}
+
+#fakebox {
+    background: #8492a6;;
+    border-radius: 22px;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 44px;
+    opacity: 0.5;
+    position: relative;
+    transition: none;
+    margin: 0 auto;
+    max-width: 584px;
+}
+
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark-color(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: -internal-light-dark-color(white, black);
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 11px system-ui;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+.fakebox-input {
+    bottom: 0;
+    font-size: 20px;
+    height: 44px;
+    left: 0;
+    line-height: 44px;
+    background-color: #8492a6;
+    margin-left: 40px;
+    border: none;
+    min-width: 330px;
+    padding-inline-start: 10px;
+    color: white;
+}
+
+.fakebox-input:focus {
+    outline: none;
+}
+
+.search-icon {
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    left: 16px;
+    position: absolute;
+    color: white;
+    padding-top: 10px;
+}
+
+.ind-text {
+    margin-top: -50px;
+    font-size: 0.7rem;
+}
+
+.ind-text-danger {
+    color: orange;
+    font-size: 0.8rem;
+}

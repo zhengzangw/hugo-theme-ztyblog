@@ -1,0 +1,12 @@
+{{ hugo.Generator }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+{{ with .Site.Params.themeColor }}
+<meta name="theme-color" content="{{.}}">
+<meta name="msapplication-TileColor" content="{{.}}">
+{{ end }}
+{{ partial "structured-data.html" . }}
+{{ partial "favicon.html" . }}
+<title>{{- .Title -}}</title>
+{{ partial "stylesheets.html" . }}

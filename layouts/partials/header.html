@@ -1,0 +1,68 @@
+<header id="header-main" class="header">
+    <nav class="navbar navbar-horizontal navbar-expand-lg shadow-sm navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">{{- .Site.Author.name -}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary"
+                aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-primary" style>
+                <ul class="navbar-nav ml-lg-auto">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-animated btn-animated-y" href="{{ .URL | absLangURL }}">
+                            <span class="btn-inner--visible">
+                                <i class="iconfont {{ .Pre }}"></i>
+                                {{ .Name }}
+                            </span>
+                            <span class="btn-inner--hidden">{{ .Post }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-animated btn-animated-y" type="button" id="nav-social"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="btn-inner--visible">
+                                    <i class="iconfont icon-social"></i> Social
+                                </span>
+                                <span class="btn-inner--hidden">联系方式</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                {{ range .Site.Params.social }}
+                                <a class="dropdown-item btn btn-sm btn-icon" href="{{ .url }}" target="_blank" rel="noopener me"
+                                    title="{{ .name | humanize }}">
+                                    <span class="btn-inner--icon mr-2"><i class="iconfont {{ .icon }}"></i></span>
+                                    {{ .name }}
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-animated btn-animated-y" type="button" id="nav-menu"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="btn-inner--visible">
+                                    <i class="iconfont icon-more"></i> Extra
+                                </span>
+                                <span class="btn-inner--hidden">其他内容</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                {{ range .Site.Menus.second }}
+                                <a class="dropdown-item btn btn-sm btn-animated btn-animated-x"
+                                    href="{{ .URL | absLangURL }}">
+                                    <span class="btn-inner--visible">
+                                        <i class="iconfont {{ .Pre }}"></i> {{ .Name }}
+                                    </span>
+                                    <span class="btn-inner--hidden">{{ .Post }}</span>
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

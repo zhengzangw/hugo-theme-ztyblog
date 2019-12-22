@@ -1,0 +1,56 @@
+<nav id="bd-docs-nav" class="collapse bd-links">
+    {{ $cur := . }}
+    {{ range .FirstSection.Pages.ByWeight }}
+    {{ if (.IsAncestor $cur) }}
+    <div class="bd-toc-item active bg-light">
+        <a class="bd-toc-link" href="{{ .RelPermalink }}">
+            <i class="iconfont icon-back-arrow-reverse"></i>
+            {{ .Title }}
+        </a>
+        <ul class="nav bd-sidenav">
+            {{ range .Pages.ByWeight }}
+            {{ if eq . $cur }}
+            <li class="active">
+                <a href="{{ .RelPermalink }}">
+                    <i class="fad fa-chevron-right mr-1"></i>
+                    {{ .Title }}
+                </a>
+            </li>
+            {{ else }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+    {{ else }}
+    <div class="bd-toc-item">
+        <a class="bd-toc-link" href="{{ .RelPermalink }}">
+            {{ if eq .Params.Status "draft" }}
+                <i class="iconfont icon-construction rawicon"></i>
+            {{ else if eq .Params.Status "focus" }}
+                <i class="iconfont icon-target"></i>
+            {{ else }}
+            {{ with .Params.kind }}
+                {{ if eq . "math" }}
+                    <span class="icontext">M</span>
+                {{ else if eq . "physics" }}
+                    <span class="icontext">P</span>
+                {{ else if eq . "computer" }}
+                    <span class="icontext">C</span>
+                {{ else if eq . "algorithm" }}
+                    <span class="icontext">A</span>
+                {{ else if eq . "language" }}
+                    <span class="icontext">L</span>
+                {{ else }}
+                    <span class="icontext">O</span>
+                {{ end }}
+            {{ end }}
+            {{ end }}
+            {{ .Title }}
+        </a>
+    </div>
+    {{ end }}
+    {{ end }}
+</nav>

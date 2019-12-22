@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ partial "list-header.html" . }}
+<main class="container">
+    <div class="row row-grid justify-content-center">
+        <div class="col col-12">
+            {{ range (.Paginate (.Pages.GroupByDate "2006-01")).PageGroups }}
+            <div class="row">
+                <div class="col">
+                    <h1 id="{{.Key}}">{{.Key}}</h1>
+                    {{ range .Pages }}
+                    <div class="card bg-soft-secondary">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h5>{{ .Title }}</h5>
+                                    <p>{{ .Summary }}</p>
+                                </div>
+                                <div
+                                    class="col-12 col-md-4 mt-4 mt-md-0 pr-4 pb-3 d-flex align-items-end justify-content-md-end">
+                                    <a href="{{.Permalink}}">
+                                        <span class="btn-inner--text">阅读更多</span>
+                                        <span class="btn-inner--icon">
+                                            <i class="iconfont icon-right-arrow"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+            {{ partial "pagination.html" . }}
+        </div>
+    </div>
+</main>
+{{ end }}

@@ -1,0 +1,5 @@
+<link rel="stylesheet" href="{{ relURL "css/bootstrap.materia.min.css" }}">
+<link rel="stylesheet" href="{{ relURL "css/katex.css" }}">
+<link rel="stylesheet" href="{{ .Site.Params.IconfontURL }}">
+{{ $style:=resources.Get "sass/main.scss" | toCSS | minify | fingerprint| resources.ToCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ relURL $style.Permalink }}" integity="{{$style.Data.Integrity}}" media="screen">

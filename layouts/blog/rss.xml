@@ -1,0 +1,24 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}</title>
+  <link rel="self" href="{{ .Permalink }}"/>
+  <updated>{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+  <author>
+    <name>{{ .Site.Author.name }}</name>
+    <email>{{ .Site.Author.email }}</email>
+    <uri>{{ .Permalink }}</uri>
+  </author>
+  <id>{{ .Permalink }}</id>
+  {{ range first 15 .Pages }}
+  <entry>
+    <title>{{ .Title }}</title>
+    <link rel="alternate" href="{{ .Permalink }}"/>
+    <id>{{ .Permalink }}</id>
+    <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</published>
+    <updated>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+		<summary>{{ .Summary }}</summary>
+    {{ $link := printf "src=\"%s$1\"" .RelPermalink }}
+    <content type="html">{{ printf `<![CDATA[%s]]>` .Content | replaceRE "src=\"([^\"]+)\"" $link | safeHTML }}</content>
+  </entry>
+  {{ end }}
+</feed>

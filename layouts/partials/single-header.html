@@ -1,0 +1,22 @@
+<div class="container rounded bg-gradient-secondary">
+    <div class="row">
+        <div class="col p-5 text-center">
+            <h1>{{ .Title }}</h1>
+            <footer>
+                {{ if not (eq .RelPermalink "/about/") }}
+                <p>
+                    <i class="iconfont icon-NewFile mr-2"></i>
+                    {{ dateFormat .Site.Params.dateformFull .Date.Local }}
+                </p>
+                {{ end }}
+                <p>
+                    <i class="iconfont icon-modify mr-2"></i>
+                    {{ dateFormat .Site.Params.dateformFull .Lastmod.Local }}
+                </p>
+            </footer>
+            <a href="../" class="tongue tongue-bottom d-print-none">
+                <i class="iconfont icon-angle-up-o"></i>
+            </a>
+        </div>
+    </div>
+</div>

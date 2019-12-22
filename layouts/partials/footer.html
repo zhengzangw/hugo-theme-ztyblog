@@ -1,0 +1,55 @@
+<footer id="footer-main">
+    <div class="footer-light">
+        <div class="container px-0">
+            <div class="row align-items-center justify-content-md-between py-4 mt-4 mx-0">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="copyright font-weight-bold text-center text-sm text-md-left">
+                        <i class="iconfont icon-copyright ficon"></i>
+                        {{ .Site.Params.Copyright -}}
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <ul class="nav align-items-center justify-content-center justify-content-md-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/zhengzangw/hugo-theme-ztyblog" target="_blank">
+                                <i class="iconfont icon-theme"></i>
+                                theme-ztyblog
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog/index.xml" target="_blank">
+                                <i class="iconfont icon-rss"></i>
+                                Atom Feed
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-html="true" title data-original-title="<div class='text-left'>
+                            Theme Commit {{ substr .Site.Params.Themecommithash 0 8 }}
+                            <br />
+                            {{ .Site.Params.Themecommitcomment }}
+                        <hr class='my-2 tiptool-hr'/>
+                            Hugo Static Site Generator {{ hugo.Version }}
+                            <br/>
+                            Commit {{ substr .Site.Params.Binarycommithash 0 8 }} 
+                            <br/>
+                            Published at
+                            <br/>
+                            {{ .Site.Params.Binarycommitdate }}
+                        </div>">
+                            <a class="nav-link" href="https://github.com/zhengzangw/hugo-site/" target="_blank">
+                                <i class="iconfont icon-git-commit-line"></i>
+                                {{ substr .Site.Params.Contentcommithash 0 8 }}
+                            </a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+                                <i class="iconfont icon-creative-commons"></i>
+                                {{ .Site.Copyright -}}
+                            </a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+</footer>

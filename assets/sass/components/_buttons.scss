@@ -1,0 +1,201 @@
+//Button Basic Style
+.btn {
+    font-weight: 600;
+    padding: .75rem 1.75rem;
+    position: relative;
+    transition: all .2s ease;
+}
+
+.btn:hover {
+    color: #8492a6;
+}
+
+.btn-outline-secondary {
+    box-shadow: none;
+    border: 1px solid transparent;
+    border-color: #eff2f7;
+}
+
+.btn-outline-secondary:hover {
+    color: #273444;
+    border-color: #eff2f7;
+    background-color: #eff2f7
+}
+
+.btn-sm {
+    font-size: .875rem;
+    color: #8492a6;
+}
+
+//Button Animation
+.btn-animated {
+    position: relative;
+    overflow: hidden
+}
+
+.btn-animated .btn-inner--visible {
+    position: relative
+}
+
+.btn-animated .btn-inner--hidden {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%)
+}
+
+.btn-animated-x .btn-inner--visible {
+    right: 0;
+    transition: right .3s ease 0s
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .btn-animated-x .btn-inner--visible {
+        transition: none
+    }
+}
+
+.btn-animated-x .btn-inner--hidden {
+    right: -100%;
+    transition: right .3s ease 0s
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .btn-animated-x .btn-inner--hidden {
+        transition: none
+    }
+}
+
+.btn-animated-x:hover .btn-inner--hidden {
+    right: 0
+}
+
+.btn-animated-x:hover .btn-inner--visible {
+    right: 150%
+}
+
+
+.btn-animated-y .btn-inner--visible {
+    top: 0;
+    transition: top .3s ease 0s
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .btn-animated-y .btn-inner--visible {
+        transition: none
+    }
+}
+
+.btn-animated-y .btn-inner--hidden {
+    top: -100%;
+    left: 0;
+    transition: top .3s ease
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .btn-animated-y .btn-inner--hidden {
+        transition: none
+    }
+}
+
+.btn-animated-y:hover .btn-inner--hidden {
+    top: 50%
+}
+
+.btn-animated-y:hover .btn-inner--visible {
+    top: 100px
+}
+
+.hover-translate-y-n3:hover,
+.translate-y-n3 {
+    transform: translateY(-3px) !important
+}
+
+//Specific Button Style
+.mt-3 .btn:not(:last-child) {
+    margin-right: .5rem;
+}
+
+.nav-item .btn,
+.dropdown .btn {
+    box-shadow: none;
+}
+
+//Button Style
+.btn-success {
+    color: #fff;
+    border-color: #2dca8c;
+    background-color: #2dca8c;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15)
+}
+
+.btn-success:hover {
+    color: #fff;
+    border-color: #24a06f;
+    background-color: #26ab76
+}
+
+.btn-success.focus,
+.btn-success:focus {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 0 0 rgba(45, 202, 140, .35)
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+    color: #fff;
+    border-color: #2dca8c;
+    background-color: #2dca8c
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
+    color: #fff;
+    border-color: #219668;
+    background-color: #24a06f
+}
+
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.show>.btn-success.dropdown-toggle:focus {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 0 0 rgba(45, 202, 140, .35)
+}
+
+.btn-dark {
+    color: #fff;
+    border-color: #273444;
+    background-color: #273444;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15)
+}
+
+.btn-dark:hover {
+    color: #fff;
+    border-color: #141b24;
+    background-color: #19212c
+}
+
+.btn-dark.focus,
+.btn-dark:focus {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 0 0 rgba(39, 52, 68, .35)
+}
+
+.btn-dark.disabled,
+.btn-dark:disabled {
+    color: #fff;
+    border-color: #273444;
+    background-color: #273444
+}
+
+.btn-dark:not(:disabled):not(.disabled).active,
+.btn-dark:not(:disabled):not(.disabled):active,
+.show>.btn-dark.dropdown-toggle {
+    color: #fff;
+    border-color: #10151b;
+    background-color: #141b24
+}
+
+.btn-dark:not(:disabled):not(.disabled).active:focus,
+.btn-dark:not(:disabled):not(.disabled):active:focus,
+.show>.btn-dark.dropdown-toggle:focus {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 0 0 rgba(39, 52, 68, .35)
+}

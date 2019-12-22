@@ -1,0 +1,105 @@
+{{ define "main" }}
+{{ partial "list-header" . }}
+
+<div id="content" class="my-3">
+    <div class="container">
+        <div class="row row-grid justify-content-center">
+            <div class="card border-0 shadow-none">
+                <div class="card-body">
+                    <h2 id="current">
+                        当前追/补番
+                        <a href="#current" class="anchor" aria-hidden="true">
+                            <i class="iconfont icon-link"></i>
+                        </a>
+                    </h2>
+                    <table>
+                        <tr class="bg-soft-dark">
+                            <td width="10%" class="d-none d-md-table-cell">编号</td>
+                            <td width="40%">番组名</td>
+                            <td width="50%">评价</td>
+                        </tr>
+                        {{ $id := 1 }}
+                        {{ range .Params.year }}
+                        {{ range .entry }}
+                        {{ if eq .status "当前" }}
+                        <tr class="bg-soft-primary">
+                            <td class="d-none d-md-table-cell">{{ $id }}</td>
+                            {{ $id = add $id 1 }}
+                            <td>{{ .name }}</td>
+                            <td>{{ .comment }}</td>
+                        </tr>
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                    </table>
+
+
+                    <hr class="my-5" />
+
+                    {{ range .Params.year }}
+                    <h2 id="{{ .year }}" class="mt-5">
+                        {{ .year }}
+                        <a href="#{{ .year }}" class="anchor" aria-hidden="true">
+                            <i class="fad fa-link"></i>
+                        </a>
+                    </h2>
+
+                    <table>
+                        <tr class="bg-soft-dark">
+                            <td width="10%" class="d-none d-md-table-cell">编号</td>
+                            <td width="35%">番组名</td>
+                            <td width="10%">状态</td>
+                            <td width="25%">评价</td>
+                        </tr>
+                        {{ range $id, $e := .entry }}
+                        <tr {{ if eq .status "弃坑" }} 
+                                class="bg-soft-danger" 
+                            {{ else if or (eq .status "追完") (eq .status "看完") }}
+                                class="bg-soft-neutral" 
+                            {{ else if or (eq .status "喜欢") (eq .status "推荐") }}
+                                class="bg-soft-success" 
+                            {{ else if eq .status "烂番" }}
+                                class="bg-soft-danger" 
+                            {{ else if eq .status "国漫" }}
+                                class="bg-soft-light" 
+                            {{ else if eq .status "补番" }} 
+                                class="bg-soft-secondary"
+                            {{ else if eq .status "当前" }}
+                                class="bg-soft-primary" 
+                            {{ else if eq .status "计划" }}
+                                class="bg-soft-warning" 
+                            {{ end }}
+                        >
+                            <td class="d-none d-md-table-cell">{{ add $id 1 }}</td>
+                            <td>{{ .name }}</td>
+                            <td>
+                                {{ if eq .status "弃坑" }}
+                                    <i style="width: 24px;" class="iconfont icon-trash"></i>
+                                {{ else if or (eq .status "追完") (eq .status "看完") }}
+                                    <i style="width: 24px;" class="iconfont icon-check"></i>
+                                {{ else if or (eq .status "喜欢") (eq .status "推荐") }}
+                                    <i style="width: 24px;" class="iconfont icon-like"></i>
+                                {{ else if eq .status "烂番" }}
+                                    <i style="width: 24px;" class="iconfont icon-like-copy"></i>
+                                {{ else if eq .status "国漫" }}
+                                    <i style="width: 24px;" class="iconfont icon-zhong"></i>
+                                {{ else if eq .status "补番" }}
+                                    <i style="width: 24px;" class="iconfont icon-history"></i>
+                                {{ else if eq .status "当前" }}
+                                    <i style="width: 24px;" class="iconfont icon-cc-hourglass"></i>
+                                {{ else if eq .status "计划" }}
+                                    <i style="width: 24px;" class="iconfont icon-calender"></i>
+                                {{ end }}
+                                <font class="d-none d-inline" style="word-break: keep-all;">{{ .status }}</font>
+                            </td>
+                            <td>{{ .comment }}</td>
+                        </tr>
+                        {{ end }}
+                    </table>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

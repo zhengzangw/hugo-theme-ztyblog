@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{.Site.LanguageCode}}">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body class="ready" id="page" data-gr-c-s-loaded="true">
+    {{ partial "header.html" . }}
+
+    {{ block "main" . }}{{ end }}
+
+    {{ if not (eq .Params.Layout "search" ) }}
+    {{ partial "footer.html" . }}
+    {{ end }}
+    {{ partial "scripts.html" . }}
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {{ partial "favicon" . }}
+    <link rel="stylesheet" href="{{ relURL "css/katex.css" }}">
+    <link rel="stylesheet" href="{{ relURL "css/wiki.css" }}" />
+    <link rel="stylesheet" href="{{ relURL "css/slides.css" }}" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <title>{{ .Title }}</title>
+    <style>
+        div.remark-footer {
+            bottom: 12px;
+            opacity: .5;
+            position: absolute;
+            left: 20px;
+        }
+        .remark-slide > .remark-title,
+        .remark-slide > .remark-center {
+            text-align: center;
+        }
+        .remark-slide > .remark-title,
+        .remark-slide > .remark-middle {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="loading">Loading {{ .Title }}</p>
+    <textarea id="source" class="d-none">
+
+layout:true
+<div class="remark-footer">
+  {{- if isset .Params "author" -}}
+  {{- .Params.author -}}
+  {{- else -}}
+  {{- .Site.Author.name -}}
+  {{- end -}}
+</div>
+---
+
+class: remark-title
+# {{ .Title }}
+<div style="display: flex; justify-content: center; text-align: center;" id="qrcode"></div>
+<div class="my-3">{{ .Permalink }}</div>
+{{ dateFormat .Site.Params.dateformFull .Lastmod.Local }}
+---
+
+{{ .RawContent }}
+        
+---
+
+class: remark-title
+# Thanks
+
+    </textarea>
+    <script defer src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script defer type="text/javascript" src="{{ relURL "js/qrcode.js" }}"></script>
+    <script defer type="text/javascript" src="{{ relURL "js/katex.js" }}"></script>
+    <script defer type="text/javascript" src="{{ relURL "js/auto-render.js" }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // generate the slides first, no need for promise
+            const slides = remark.create({});
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "{{ .Permalink }}",
+                width: 128,
+                height: 128,
+            });
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {
+                        left: "$$",
+                        right: "$$",
+                        display: true
+                    },
+                    {
+                        left: "$",
+                        right: "$",
+                        display: false
+                    },
+                    {
+                        left: "\\[",
+                        right: "\\]",
+                        display: true
+                    },
+                    {
+                        left: "\\(",
+                        right: "\\)",
+                        display: false
+                    },
+                ]
+            });
+            document.getElementById("loading").classList.add("d-none");
+        });
+    </script>
+</body>
+
+</html>

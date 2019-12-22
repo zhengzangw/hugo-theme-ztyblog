@@ -1,0 +1,96 @@
+body {
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi mi    cro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+    text-align: justify;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.red {
+  color:red;
+}
+.green {
+  color:green;
+}
+
+.white {
+  color:white;
+}
+
+s {
+  color:black;
+}
+
+n {
+  color:blue;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th, td {
+  font-size: 24px;
+  padding: 2 20 2 20;
+}
+
+th {
+  background-color: #101020;
+  color: white;
+}
+
+td {
+  border-bottom: 1px solid #a0a0a0;
+}
+
+img {
+  margin: 15px 15px 15px 15px;
+}
+
+li {
+  margin-top: 0.5em;
+}
+
+blockquote {
+  color: #404084;
+  font-size: 24px;
+}
+
+.remark-slide-content {
+  font-size: 24px;
+  font-family: 'Microsoft YaHei';
+}
+
+h1 { 
+  font-family: 'Arial', 'SimHei', 'Sans';
+  margin-bottom: 45px;
+}
+
+h2, h3, h4 {
+  font-family: 'Arial', 'SimHei', 'Sans';
+}
+
+strong {
+  font-family: 'Arial', 'SimHei', 'Sans';
+}
+
+.katex { font-size: 1.0em; }
+
+.column:first-of-type {float:left}
+.column:last-of-type {float:right}
+
+.split-40 .column:first-of-type {width: 40%}
+.split-40 .column:last-of-type {width: 60%}
+
+/* @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+body { font-family: 'Droid Serif'; }
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+}
+.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; } */
+
