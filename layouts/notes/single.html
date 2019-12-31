@@ -7,14 +7,14 @@
 
 <body style="overflow-x: unset;">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row d-print-block">
 			<div class="col-12 col-md-3 col-lg-2 bd-sidebar d-print-none">
 				{{ partial "notes-header" . }}
 				{{ partial "notes-sidebar" . }}
 			</div>
 			<div class="col-12 col-md-9 col-lg-10 d-print-block">
-				<div class="row">
-					<main class="col-12 col-md-10 col-lg-9 py-md-3 pl-md-5 bd-content" role="main">
+				<div class="row d-print-block">
+					<main class="col-12 col-md-10 col-lg-9 py-md-3 pl-md-5 bd-content d-print-block" role="main">
 						<div id="title" class="my-4 border-bottom">
 							<span>{{ .Parent.Title }}</span>
 							<h2>{{ .Title }}</h2>
