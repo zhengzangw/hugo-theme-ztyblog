@@ -78,7 +78,8 @@
                 let pageLoaders = [];
                 $.each(list, (id, anchor) => {
                     console.log(id, anchor);
-                    const div = body.append('<div></div>');
+                    const div = $('<div id="page-' + id + '"></div>');
+                    div.appendTo(body);
                     pageLoaders[id] = loadPage(div, anchor.text, anchor.href);
                 });
 
