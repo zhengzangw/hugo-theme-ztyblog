@@ -17,10 +17,17 @@
                 <div class="row d-print-block">
                     <main class="col-12 col-md-10 col-lg-9 py-md-3 pl-md-5 bd-content d-print-block" role="main">
                         <div id="title" class="my-4 border-bottom">
-                            <h2>{{ .Title }}</h2>
+                            <h2>
+                                {{ .Title }}
+                                {{ if not .Parent.IsHome }}
+                                <a class="float-right text-sm" href="#" onclick="printAllNotes()">
+                                    打印全部
+                                </a>
+                                {{ end }}
+                            </h2>
                             {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="fad fa-link"></i></a>${3}` | safeHTML }}
                         </div>
-                        <div class="list-group">
+                        <div id="notes-list" class="list-group">
                             {{ range .Pages.ByWeight }}
                             <a class="list-group-item" href="{{ .RelPermalink }}">
                                 {{ .Title }}
@@ -42,6 +49,74 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+            integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+        <script>
+            const loadPage = (div, title, link) => {
+                div.append('<h1>' + title + '</h1>');
+                return new Promise((resolve, reject) => {
+                    axios.get(link)
+                        .then(res => {
+                            const page = $(res.data);
+                            div.append(page.find('#content'));
+                            resolve();
+                        })
+                        .catch(err => reject(err));
+                });
+            }
+            const printAllNotes = () => {
+                const body = $('body');
+                const title = $('#title').clone().find('a').remove().end().text();
+                const list = $('#notes-list').children();
+                
+                body.children().remove();
+                body.append('<h1 id="title">Loading notes...</h1><hr/>');
+                
+                let pageLoaders = [];
+                $.each(list, (id, anchor) => {
+                    console.log(id, anchor);
+                    const div = body.append('<div></div>');
+                    pageLoaders[id] = loadPage(div, anchor.text, anchor.href);
+                });
+
+                Promise.all(pageLoaders)
+                    .then(() => {
+                        $('#title').text(title);
+                        renderMathInElement(document.body, {
+                            delimiters: [{
+                                left: "$$",
+                                right: "$$",
+                                display: true
+                            },
+                            {
+                                left: "\\[",
+                                right: "\\]",
+                                display: true
+                            },
+                            {
+                                left: "$",
+                                right: "$",
+                                display: false
+                            },
+                            {
+                                left: "\\(",
+                                right: "\\)",
+                                display: false
+                            }]
+                        });
+                        window.print();
+                        window.location.reload();
+                    })
+                    .catch(err => {
+                        $('#title').addClass('text-danger');
+                        $('#title').text('Loading failed.');
+                        console.error(err);
+                    });
+            }
+        </script>
 </body>
 
 </html>
