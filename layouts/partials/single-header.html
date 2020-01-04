@@ -6,12 +6,12 @@
                 {{ if not (eq .RelPermalink "/about/") }}
                 <p>
                     <i class="iconfont icon-NewFile mr-2"></i>
-                    {{ dateFormat .Site.Params.dateformFull .Date.Local }}
+                    {{ dateFormat .Site.Params.dateforms.full .Date.Local }}
                 </p>
                 {{ end }}
                 <p>
                     <i class="iconfont icon-modify mr-2"></i>
-                    {{ dateFormat .Site.Params.dateformFull .Lastmod.Local }}
+                    {{ dateFormat .Site.Params.dateforms.full .Lastmod.Local }}
                 </p>
             </footer>
             <a href="../" class="tongue tongue-bottom d-print-none">

@@ -1,8 +1,12 @@
 baseURL = "/"
 theme = "ztyblog"
 title = "Welcome"
+description = ""
 copyright = "CC BY-NC 4.0"
 
+
+paginate = 10
+rssLimit = 25
 languageCode = "zh-CN"
 hasCJKLanguage = true
 pygmentsCodeFences = true
@@ -10,21 +14,32 @@ pygmentsCodefencesGuessSyntax = false
 pygmentsStyle = "colorful"
 enableRobotsTXT = true
 enableGitInfo = true
-Paginate = 10
 assetDir = ["/assets", "/themes/ztyblog/assets"]
 
+
+[author]
+    name = "name"
+    email = "email"
+
+
 [params]
-    author = ""
-    description = ""
-    copyright = ""
-    dateformFull = "2006-01-02 15:04 CST"
-    updatelisturl = ""
-    mail = ""
-    iconfontURL = "//at.alicdn.com/t/font_1559566_z93lvlj24ja.css"
-  localcommithash = ""
-  localcommitdate = ""
-  localcommitcomment = ""
-  binarycommitdate = ""
+    [params.links]
+        homeImage = ""
+        updateList = ""
+        iconFont = "//at.alicdn.com/t/font_1559566_z93lvlj24ja.css"
+
+    [params.dateforms]
+        date = "2006-01-02"
+        short = "1月2日"
+        long = "2006-01-02 15:04"
+        full = "2006-01-02 15:04 CST"
+
+    [params.commit]
+        commitHash = ""
+        commitDate = ""
+        commitMessage = ""
+        binaryVersion = ""
+
     [[params.social]]
         identifier = "github"
         name = "Github"
@@ -35,6 +50,7 @@ assetDir = ["/assets", "/themes/ztyblog/assets"]
         name = "email"
         icon = "icon-email"
         url = ""
+
     [params.pagination]
         class = "pagination justify-content-center"
         showFirst = true
@@ -46,35 +62,36 @@ assetDir = ["/assets", "/themes/ztyblog/assets"]
         firstIndicator = '<i class="iconfont icon-back-arrow-"></i>'
         lastIndicator = '<i class="iconfont icon-back-arrow-reverse"></i>'
 
+
 [menus]
-    [[menu.main]]
+    [[menus.main]]
         identifier = "blog"
         name = "blog"
         url = "/blog/"
         pre = "icon-blog"
         post = "博客"
         weight = 1
-    [[menu.main]]
+    [[menus.main]]
         identifier = "notes"
         name = "notes"
         url = "/notes/"
         pre = "icon-Notes"
         post = "笔记"
         weight = 2
-    [[menu.main]]
+    [[menus.main]]
         identifier = "about"
         name = "about"
         url = "/about/"
         pre = "icon-aboutus"
         post = "关于我"
         weight = 3
-    [[menu.second]]
+    [[menus.second]]
         identifier = "bangumi"
         name = "bangumi"
         url = "/bangumi/"
         pre = "icon-bilibili-line"
         post = "追番列表"
-    [[menu.second]]
+    [[menus.second]]
         identifier = "friends"
         name = "friends"
         url = "/friends/"

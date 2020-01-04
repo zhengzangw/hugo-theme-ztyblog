@@ -1,7 +1,7 @@
 <header id="header-main" class="header">
     <nav class="navbar navbar-horizontal navbar-expand-lg shadow-sm navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">{{- .Site.Author.name -}}</a>
+            <a class="navbar-brand" href="/">{{ .Site.Title }}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary"
                 aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
                                 <span class="btn-inner--hidden">联系方式</span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                {{ range .Site.Params.social }}
+                                {{ range .Site.Params.Social }}
                                 <a class="dropdown-item btn btn-sm btn-icon" href="{{ .url }}" target="_blank" rel="noopener me"
                                     title="{{ .name | humanize }}">
                                     <span class="btn-inner--icon mr-2"><i class="iconfont {{ .icon }}"></i></span>

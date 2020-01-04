@@ -36,12 +36,7 @@ The theme doesn't require any advanced configuration. Use `config.toml.example` 
 To auto generate information of git commit, add following line to your `deploy.sh`
 
 ```bash
-gsed -i "/localcommithash/c \\\tlocalcommithash = \"$(git rev-parse HEAD)\"" config.toml
-gsed -i "/localcommitdate/c \\\tlocalcommitdate = \"$(git log --pretty=format:"%cd" $(git rev-parse HEAD) -1)\"" config.toml
-gsed -i "/localcommitcomment/c \\\tlocalcommitcomment = \"$(git log --pretty=format:"%s" $(git rev-parse HEAD) -1)\"" config.toml
-cd public
-gsed -i "/binarycommitdate/c \\\tbinarycommitdate = \"$(git log --pretty=format:"%cd" $(git rev-parse HEAD) -1)\"" ../config.toml
-cd ..
+To be updated...
 ```
 
 ## Known issues

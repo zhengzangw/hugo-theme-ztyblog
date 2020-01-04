@@ -5,7 +5,7 @@
                 <div class="col-md-4 mb-3 mb-md-0">
                     <div class="copyright font-weight-bold text-center text-sm text-md-left">
                         <i class="iconfont icon-copyright ficon"></i>
-                        {{ .Site.Params.Copyright -}}
+                        {{ .Site.Copyright }}
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -23,21 +23,21 @@
                             </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-html="true" title data-original-title="<div class='text-left'>
-                            Theme Commit {{ substr .Site.Params.Themecommithash 0 8 }}
+                            Theme Commit {{ substr .Site.Params.commit.hash 0 8 }}
                             <br />
-                            {{ .Site.Params.Themecommitcomment }}
+                            {{ .Site.Params.commit.message }}
                         <hr class='my-2 tiptool-hr'/>
                             Hugo Static Site Generator {{ hugo.Version }}
                             <br/>
-                            Commit {{ substr .Site.Params.Binarycommithash 0 8 }} 
+                            Commit {{ substr .Site.Params.commit.version 0 8 }} 
                             <br/>
                             Published at
                             <br/>
-                            {{ .Site.Params.Binarycommitdate }}
+                            {{ .Site.Params.commit.date }}
                         </div>">
                             <a class="nav-link" href="https://github.com/zhengzangw/hugo-site/" target="_blank">
                                 <i class="iconfont icon-git-commit-line"></i>
-                                {{ substr .Site.Params.Contentcommithash 0 8 }}
+                                {{ substr .Site.Params.commit.hash 0 8 }}
                             </a>
                         </li>
                         <!--
