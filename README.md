@@ -12,7 +12,7 @@ A demo is available at [https://zhengzangw.com](https://zhengzangw.com/).
 - Rendering templates for
   - Blog posts
   - Course notes
-  - Onlide slides ([Remark.js](https://remarkjs.com/))
+  - Presentations ([Remark.js](https://remarkjs.com/))
 
 ## How to Use
 
