@@ -2,47 +2,70 @@
 
 ![ZTY Blog Theme](https://raw.githubusercontent.com/zhengzangw/hugo-theme-ztyblog/master/images/screenshot.png)
 
-## General inforamtions
+A Hugo theme highly inspired by Tianyun Zhang's blog ([https://doowzs.com](https://doowzs.com/)).
 
-This theme was highly inspired by the [doowzs.com](https://doowzs.com/). You can see demo at [zhengzangw.com](https://zhengzangw.com/).
+A demo is available at [https://zhengzangw.com](https://zhengzangw.com/).
 
 ## Features
 
-* Provide specific rendering for
-  * blog
-  * notes
-  * review
+- Clean and beautiful layout
+- Rendering templates for
+  - Blog posts
+  - Course notes
+  - Onlide slides ([Remark.js](https://remarkjs.com/))
 
-## How to start
+## How to Use
 
-You can download the theme manually by going to [https://github.com/zhengzangw/hugo-theme-ztyblog](https://github.com/zhengzangw/hugo-theme-ztyblog) and pasting it to `themes/ztyblog` in your root directory.
+### Download the Theme
 
-You can also clone it directly to your Hugo folder:
+Download all files from this repository and place it to `themes/ztyblog` from the root directory of your Hugo site.
 
-``` bash
-$ git clone https://github.com/zhengzangw/hugo-theme-ztyblog
-```
+If you are not going to make radical changes, it is recommended to add this repository as a git submodule to your site so that you can get updates easily.
 
-If you don't want to make any radical changes, it's the best option, because you can get new updates when they are available. To do so, include it as a git submodule:
-
-``` bash
+```shell
 $ git submodule add https://github.com/zhengzangw/hugo-theme-ztyblog themes/ztyblog
 ```
 
-## How to configure
+The folder structure of your site should look like
 
-The theme doesn't require any advanced configuration. Use `config.toml.example` as an example configuration file.
-
-To auto generate information of git commit, add following line to your `deploy.sh`
-
-```bash
-To be updated...
 ```
+root
+├─archetypes
+├─content
+│   ├─blog
+│   │   └─foobar.md
+│   ├─notes
+│   │   └─calculus
+│   │       │─_index.md
+│   │       └─intro.md
+│   ├─slides
+│   │   └─presentation.md
+│   │─_index.md
+│   │─about.md
+│   │─bangumi.md
+│   └─friends.md
+├─layouts
+├─static
+├─themes
+│   ├─ztyblog
+│   └─......
+└─config.toml
+```
+
+### Configure the Theme
+
+To be updated...
+
+### CI/CD Support
+
+To be updated...
 
 ## Known issues
 
-Not yet fully tested (which means there might be many issues).
+- Not fully tested
+- Files from different sources
+- Still updating, files not stable
 
-## How to contribute
+## How to Contribute
 
 If you spot any bugs, please use [Issue Tracker](https://github.com/zhengzangw/hugo-theme-ztyblog/issues) or if you want to add a new feature directly please create a new [Pull Request](https://github.com/zhengzangw/hugo-theme-ztyblog/pulls).
