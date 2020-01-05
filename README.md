@@ -16,7 +16,7 @@ A demo is available at [https://zhengzangw.com](https://zhengzangw.com/).
 
 ## How to Use
 
-### Download the Theme
+### Installation
 
 Download all files from this repository and place it to `themes/ztyblog` from the root directory of your Hugo site.
 
@@ -52,13 +52,13 @@ root
 └─config.toml
 ```
 
-### Configure the Theme
+### Configuration
 
-To be updated...
+There are three sections that is customizable in the config file:
 
-### CI/CD Support
-
-To be updated...
+- `params.commit`: commit hash and message of your site repository
+- `params.social`: customize your social links
+- `menus`: customize your menus in the header navigation bar
 
 ## Known issues
 

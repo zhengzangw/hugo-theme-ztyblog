@@ -22,6 +22,7 @@
                                 Atom Feed
                             </a>
                         </li>
+                        {{ if gt (len .Site.Params.commit.hash) 0 }}
                         <li class="nav-item" data-toggle="tooltip" data-html="true" title data-original-title="<div class='text-left'>
                             Theme Commit {{ substr .Site.Params.commit.hash 0 8 }}
                             <br />
@@ -40,6 +41,7 @@
                                 {{ substr .Site.Params.commit.hash 0 8 }}
                             </a>
                         </li>
+                        {{ end }}
                         <!--
                         <li class="nav-item">
                             <a class="nav-link" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
