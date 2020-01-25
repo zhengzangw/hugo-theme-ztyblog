@@ -1,0 +1,19 @@
+{
+  "name": "ztyblog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zhengzangw/hugo-theme-ztyblog.git",
+  "author": "zhengzangw <zhengzangw@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "animate.css": "^3.7.2",
+    "bootstrap": "^4.4.1",
+    "bootswatch": "^4.4.1",
+    "fuse.js": "^3.4.6",
+    "jquery": "^3.4.1",
+    "katex": "^0.11.1"
+  },
+  "scripts": {
+    "load": "sh ./load.sh"
+  }
+}

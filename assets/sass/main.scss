@@ -1,8 +1,12 @@
+@import "vendors-extensions/materia/variables";
+@import "vendors-extensions/bootstrap/scss/bootstrap";
+@import "vendors-extensions/materia/bootswatch";
+@import "vendors-extensions/animate";
+
 @import "helpers/functions";
 @import "helpers/minxins";
 @import "helpers/variables";
 @import "base/normalize";
-@import "base/animate";
 @import "components/jumbotron";
 @import "components/navigation";
 @import "components/buttons";
@@ -15,7 +19,3 @@
 @import "pages/search";
 @import "themes/color";
 @import "themes/global";
-@import "vendors-extensions/bootstrap";
-@import "vendors-extensions/fonticon";
-@import "vendors-extensions/katex";
-@import "vendors-extensions/print";
