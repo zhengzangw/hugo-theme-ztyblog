@@ -1,112 +1,26 @@
 {{ $jquery := resources.Get "js/jquery.min.js" }}
 {{ $bootstrap := resources.Get "js/bootstrap.min.js" }}
+{{ $tweenmax := resources.Get "js/TweenMax.min.js" }}
 {{ $leon := resources.Get "js/leon.js" }}
 {{ $qrcode := resources.Get "js/qrcode.js" }}
+{{ $fuse := resources.Get "js/fuse.js" }}
 {{ $search := resources.Get "js/search.js" }}
-{{ $tweenmax := resources.Get "js/TweenMax.min.js" }}
 {{ $katex := resources.Get "js/katex.min.js" }}
 {{ $autorender := resources.Get "js/auto-render.min.js" }}
-{{ $fuse := resources.Get "js/fuse.js" }}
+{{ $prism := resources.Get "js/prism.js" }}
 {{ $custom := resources.Get "js/custom.js" }}
-{{ $secureJS := slice $jquery $bootstrap $qrcode $tweenmax $leon $search $fuse $katex $autorender $custom | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $customnothome := resources.Get "js/custom-not-home.js" }}
+{{ $customishome := resources.Get "js/custom-is-home.js" }}
+
+{{ $secureJS := slice $jquery $bootstrap $qrcode $tweenmax $leon $search $fuse $katex $autorender $custom $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
 {{ if not .IsHome }}
-<script type="text/javascript">
-    $(document).on('click', 'a[href^="#"]', function (event) {
-        event.preventDefault();
-
-        $('html, body').animate({
-            scrollTop: $($.attr(this, 'href')).offset().top
-        }, 500);
-    });
-</script>
+{{ $secureJSNotHome := $customnothome | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $secureJSNotHome.RelPermalink }}" integrity="{{ $secureJSNotHome.Data.Integrity }}"></script>
 {{ end }}
 
-<script type="text/javascript">
-    $(function () {
-        $("[data-toggle='tooltip']").tooltip();
-    });
-</script>
-
 {{ if .IsHome }}
-<script type="text/javascript">
-    let leon, canvas, ctx;
-
-    const sw = 350;
-    const sh = 100;
-    const pixelRatio = 2;
-
-    function init() {
-        canvas = document.getElementById('welcome-canvas');
-        ctx = canvas.getContext("2d");
-
-        canvas.width = sw * pixelRatio;
-        canvas.height = sh * pixelRatio;
-        canvas.style.width = sw + 'px';
-        canvas.style.height = sh + 'px';
-        ctx.scale(pixelRatio, pixelRatio);
-
-        controll = {
-            box: false,
-            grids: false,
-            points: false,
-            drawing: () => {
-                let i, total = leon.drawing.length;
-                for (i = 0; i < total; i++) {
-                    TweenMax.killTweensOf(leon.drawing[i]);
-                    TweenMax.fromTo(leon.drawing[i], 2, {
-                        value: 0
-                    }, {
-                        value: 1,
-                        ease: Power4.easeOut
-                    });
-                }
-            }
-        };
-
-        leon = new LeonSans({
-            text: 'Welcome',
-            color: [
-                ['#64d3ce', '#2a92ce'],
-                ['#e7c4c4', '#fd46aa', '#e1ea73', '#ff8974'],
-                ['#aae898', '#8ad781'],
-                ['#64d3ce', '#2a92ce'],
-                ['#e7c4c4', '#fd46aa', '#e1ea73', '#ff8974'],
-                ['#64d3ce', '#2a92ce'],
-                ['#aae898', '#8ad781']
-            ],
-            size: 80,
-            weight: 300
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    function animate(t) {
-        requestAnimationFrame(animate);
-
-        ctx.clearRect(0, 0, sw, sh);
-
-        const x = (sw - leon.rect.w) / 2;
-        const y = (sh - leon.rect.h) / 2;
-        leon.position(x, y);
-
-        leon.draw(ctx);
-    }
-
-    window.onload = () => {
-        init();
-        let i, total = leon.drawing.length;
-        for (i = 0; i < total; i++) {
-            TweenMax.fromTo(leon.drawing[i], 1.6, {
-                value: 0
-            }, {
-                delay: i * 0.05,
-                value: 1,
-                ease: Power4.easeOut
-            });
-        }
-    };
-</script>
+{{ $secureJSIsHome := $customishome | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $secureJSIsHome.RelPermalink }}" integrity="{{ $secureJSIsHome.Data.Integrity }}"></script>
 {{ end }}

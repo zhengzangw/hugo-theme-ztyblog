@@ -1,12 +1,13 @@
+@import "themes/color";
+@import "themes/font";
+@import "themes/theme";
+
+@import "vendors-extensions/normalize";
 @import "vendors-extensions/materia/variables";
 @import "vendors-extensions/bootstrap/scss/bootstrap";
 @import "vendors-extensions/materia/bootswatch";
 @import "vendors-extensions/animate";
 
-@import "helpers/functions";
-@import "helpers/minxins";
-@import "helpers/variables";
-@import "base/normalize";
 @import "components/jumbotron";
 @import "components/navigation";
 @import "components/buttons";
@@ -17,5 +18,4 @@
 @import "pages/home";
 @import "pages/markdown";
 @import "pages/search";
-@import "themes/color";
-@import "themes/global";
+@import "pages/print"
