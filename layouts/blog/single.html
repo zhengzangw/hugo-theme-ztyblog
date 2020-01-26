@@ -18,9 +18,9 @@
           <div class="card-body">
             {{ $content := "" }}
             {{ if .Site.Params.options.mathmode }}
-              {{ $content := .RawContent | replaceRE "_" "\\_" | markdownify }}
+              {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
             {{ else }}
-              {{ $content := .Content }}
+              {{ $content = .Content }}
             {{ end }}
             {{ if .Site.Params.options.linkicon }}
               {{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
