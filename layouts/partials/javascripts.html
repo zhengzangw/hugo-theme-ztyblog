@@ -1,30 +1,104 @@
-{{ $jquery := resources.Get "js/jquery.min.js" }}
-{{ $bootstrap := resources.Get "js/bootstrap.min.js" }}
-{{ $tweenmax := resources.Get "js/TweenMax.min.js" }}
-{{ $leon := resources.Get "js/leon.js" }}
+{{- /* jQuery */ -}}
+{{- if .Site.Params.useCDN -}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{{- else -}}
+    {{- $jquery := resources.Get "js/jquery.min.js" -}}
+    {{- $securejquery := slice $jquery | resources.Concat "jquery.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securejquery.RelPermalink }}" integrity="{{ $securejquery.Data.Integrity }}"></script>
+{{- end -}}
+
+{{- /* bootstrap */ -}}
+{{- if .Site.Params.useCDN -}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{{- else -}}
+    {{- $bootstrap := resources.Get "js/bootstrap.min.js" -}}
+    {{- $securebootstrap := slice $bootstrap | resources.Concat "bootstrap.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securebootstrap.RelPermalink }}" integrity="{{ $securebootstrap.Data.Integrity }}"></script>
+{{- end -}}
+
+{{- /* katex */ -}}
+{{- if .Site.Params.useCDN -}}
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+{{- else -}}
+    {{- $katex := resources.Get "js/katex.min.js" -}}
+    {{- $autorender := resources.Get "js/auto-render.min.js" -}}
+    {{- $securekatex := slice $katex $autorender | resources.Concat "katex.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securekatex.RelPermalink }}" integrity="{{ $securekatex.Data.Integrity }}"></script>
+{{- end -}}
+
+{{- /* Local */ -}}
 {{ $qrcode := resources.Get "js/qrcode.js" }}
 {{ $fuse := resources.Get "js/fuse.js" }}
 {{ $search := resources.Get "js/search.js" }}
-{{ $katex := resources.Get "js/katex.min.js" }}
-{{ $autorender := resources.Get "js/auto-render.min.js" }}
 {{ $prism := resources.Get "js/prism.js" }}
 {{ $custom := resources.Get "js/custom.js" }}
-{{ $customnothome := resources.Get "js/custom-not-home.js" }}
-{{ $customishome := resources.Get "js/custom-is-home.js" }}
-
-{{ $secureJS := slice $jquery $bootstrap $qrcode $tweenmax $leon $search $fuse $katex $autorender $custom $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $secureJS := slice $qrcode $search $fuse $custom $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
+{{/* Not Home */}}
 {{ if not .IsHome }}
-{{ $secureJSNotHome := $customnothome | resources.Minify | resources.Fingerprint "sha512" }}
-<script type="text/javascript" src="{{ $secureJSNotHome.RelPermalink }}" integrity="{{ $secureJSNotHome.Data.Integrity }}"></script>
+<script type="text/javascript">
+//katex auto loaded
+document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(
+        document.body, {
+            delimiters: [
+                {
+                    left: "$$",
+                    right: "$$",
+                    display: true
+                },
+                {
+                    left: "\\[",
+                    right: "\\]",
+                    display: true
+                },
+                {
+                    left: "$",
+                    right: "$",
+                    display: false
+                },
+                {
+                    left: "\\(",
+                    right: "\\)",
+                    display: false
+                }
+            ],
+            strict: false
+        }
+    );
+});
+
+//link auto decorate
+$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500);
+});
+</script>
 {{ end }}
 
+{{/* Home */}}
 {{ if .IsHome }}
-{{ $secureJSIsHome := $customishome | resources.Minify | resources.Fingerprint "sha512" }}
-<script type="text/javascript" src="{{ $secureJSIsHome.RelPermalink }}" integrity="{{ $secureJSIsHome.Data.Integrity }}"></script>
+{{- /* leon */ -}}
+{{- if .Site.Params.leonsans -}}
+{{- if .Site.Params.useCDN -}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    {{- $leon := resources.Get "js/leon.js" -}}
+    {{- $secureleon := slice $leon | resources.Concat "leon.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $secureleon.RelPermalink }}" integrity="{{ $secureleon.Data.Integrity }}"></script>
+{{- else -}}
+    {{- $tweenmax := resources.Get "js/TweenMax.min.js" -}}
+    {{- $leon := resources.Get "js/leon.js" -}}
+    {{- $secureleon := slice $tweenmax $leon | resources.Concat "leon.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $secureleon.RelPermalink }}" integrity="{{ $secureleon.Data.Integrity }}"></script>
+{{- end -}}
 
-{{ if .Site.Params.leonsans }}
 <script type="text/javascript">
 let leon, canvas, ctx;
 
@@ -104,5 +178,6 @@ window.onload = () => {
     }
 };
 </script>
-{{ end }}
+{{- end -}}
+
 {{ end }}

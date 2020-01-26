@@ -1,12 +1,12 @@
-@import "themes/color";
-@import "themes/theme";
-@import "themes/font";
-
 @import "vendors-extensions/normalize";
 @import "vendors-extensions/materia/variables";
 @import "vendors-extensions/bootstrap/scss/bootstrap";
 @import "vendors-extensions/materia/bootswatch";
 @import "vendors-extensions/animate";
+
+@import "themes/color";
+@import "themes/theme";
+@import "themes/font";
 
 @import "components/jumbotron";
 @import "components/navigation";
