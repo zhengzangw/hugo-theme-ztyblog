@@ -1,7 +1,17 @@
 {{ define "main" }}
 <section class="section-half-rounded">
-	<div class="jumbotron section-inner left-0 rounded-right bg-gradient-red overflow-hidden col-lg-9">
-		<img src="/images/dessert.jpg" alt="Image" class="img-as-bg blend-mode--multiply">
+	<div class="jumbotron section-inner left-0 rounded-right {{ with $.Site.Params.options.homeblend -}} 
+	{{- if eq $.Site.Params.options.homeblend "green" -}} 
+		bg-gradient-green   
+	{{- else if eq $.Site.Params.options.homeblend "blue" -}} 
+		bg-gradient-blue    
+	{{- else if eq $.Site.Params.options.homeblend "red" -}} 
+		bg-gradient-red
+	{{- else if eq $.Site.Params.options.homeblend "white" -}} 
+		bg-gradient-white
+	{{- end -}} 
+	{{- end }} overflow-hidden col-lg-9">
+		<img src="{{ .Site.Params.options.notfoundimage }}" alt="Image" class="img-as-bg blend-mode--multiply">
 	</div>
 	<div class="container text-center text-lg-left py-5">
 		<div class="row">
