@@ -1,11 +1,9 @@
 //Navigation
-.nav-link,
-.nav-item {
-    font-size: .875rem;
-    color: #8492a6;
+.navbar {
+    padding: .75rem 1rem;
 }
 
-.nav-brand {
+.navbar-brand {
     font-size: 1.25rem;
     line-height: inherit;
     display: inline-block;
@@ -13,6 +11,12 @@
     padding-top: .0375rem;
     padding-bottom: .0375rem;
     white-space: nowrap;
+}
+
+.nav-link,
+.nav-item {
+    font-size: .875rem;
+    color: $highlight-grey;
 }
 
 .navbar-light .navbar-toggler {
@@ -99,6 +103,6 @@
     .navbar-expand-lg .navbar-nav:not(.flex-row) .dropdown-menu {
         min-width: auto;
         box-shadow: none;
-        background-color: #eff2f7!important;
+        padding: 0rem 1.75rem;
     }
 }

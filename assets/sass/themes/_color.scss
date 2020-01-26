@@ -8,6 +8,10 @@ $midnightblue: rgba(44, 62, 80, 0.85);
 $teal: rgba(0, 134, 123, 0.85);
 $white: rgba(255, 255, 255, 0.85);
 
+.bg-list {
+    background-color: #eff2f7;
+}
+
 .bg-gradient-green {
     background: linear-gradient(50deg, #2dca8c 0, #2dcabb 100%) !important;
 }
@@ -27,7 +31,6 @@ $white: rgba(255, 255, 255, 0.85);
 .blend-mode--multiply {
     mix-blend-mode: multiply;
 }
-
 
 .bg-soft-primary {
     background-color: #e2edff
