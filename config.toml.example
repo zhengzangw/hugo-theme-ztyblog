@@ -1,4 +1,4 @@
-baseURL = "https://zhengzangw.com/" #Your Site URL
+baseURL = "https://example.com/" #Your Site URL
 title = "Welcome" #Title for the homepage
 
 # Language
@@ -88,19 +88,23 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
     keywords = "blog" # Keyworks for searching engine
 
     # Git Info
+    ## Git info for raw content
     contentcommithash = "7cda57fc0c5d9f778b09e0137896ec1c636f684b"
 	contentcommitdate = "Sat Jan 25 23:04:34 2020 +0800"
 	contentcommitcomment = "rebuilding site Sat Jan 25 23:04:34 CST 2020"
+    ## Git info for theme
 	themecommithash = "26f11d3404fd522c0b902f278eaa9de987f6a66c"
 	themecommitdate = "Wed Jan 1 15:59:37 2020 +0800"
 	themecommitcomment = "pass the appended element to loadPage"
-	binarycommithash = "b56a25a13e1e29abc126b370f37c905b68517e47"
+	## Git info for your whole site
+    binarycommithash = "b56a25a13e1e29abc126b370f37c905b68517e47"
 	binarycommitdate = "Sat Jan 25 23:04:36 2020 +0800"
 
     # Home Page
     homeimage = "/images/boat.jpg" # Image URL for home page
     homeblend = "blue" # Image blend color: blank, blue, green, red, white
-    enableGitInfo = false
+    themecommitinfo = true
+    gitinfo = true
     copyright = "2017 - 2019, Zangwei Zheng. All rights reserved." # Copyright
     icp = "waiting"
     security = "waiting"
