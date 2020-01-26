@@ -16,7 +16,11 @@
       <div class="col col-12 col-lg-8">
         <div class="card border-0 shadow-none">
           <div class="card-body">
-            {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+            {{ if .Site.Params.options.mathmode }}
+              {{ .RawContent | replaceRE "_" "\\_" | markdownify | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+            {{ else }}
+              {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+            {{ end }}
           </div>
           <div class="card-footer">
             <div class="post-nav">

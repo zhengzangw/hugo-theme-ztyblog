@@ -37,7 +37,11 @@
 							</footer>
 						</div>
 						<div id="content" class="hl-h2">
-							{{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+							{{ if .Site.Params.options.mathmode }}
+								{{ .RawContent | replaceRE "_" "\\_" | markdownify | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+							{{ else }}
+								{{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+							{{ end }}
 						</div>
 					</main>
 					<div class="d-none d-lg-block col-lg-3 bd-toc d-print-none">
@@ -49,7 +53,7 @@
 		</div>
 	</div>
 
-	{{ partial "scripts.html" . }}
+	{{ partial "javascripts.html" . }}
 </body>
 
 </html>

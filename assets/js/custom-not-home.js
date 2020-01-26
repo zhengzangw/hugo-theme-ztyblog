@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(
         document.body, {
-            delimiters: [{
+            delimiters: [
+                {
                     left: "$$",
                     right: "$$",
                     display: true
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     right: "\\)",
                     display: false
                 }
-            ]
+            ],
+            strict: false
         }
     );
 });
