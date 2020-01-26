@@ -1,14 +1,14 @@
 {{ $pag := $.Paginator }}
 {{ if gt $pag.TotalPages 1 }}
     <nav class="{{ .Section }}-pagination" aria-label="{{ .Section }} navigation">
-        <ul class="pagination {{- with .Params.pagination.class | default .Site.Params.pagination.class }} {{ . }} {{- end }}">
+        <ul class="pagination {{- with .Params.pagination.class | default "pagination justify-content-center" }} {{ . }} {{- end }}">
             {{ if (and (not $pag.HasPrev) (eq $.Site.Params.pagination.showBeginEnd false)) }}
                 
             {{ else }}
                 {{ if not (eq .Site.Params.pagination.showFirst false) }}
                     {{ with $pag.First }}
                         <li class="page-item page-item-first">
-                            <a class="page-link" href="{{ .URL }}" aria-label="First">{{ with $.Site.Params.pagination.firstIndicator }} {{ . | markdownify }} {{else}}<span aria-hidden="true">&laquo;&laquo;</span><span class="sr-only">First</span>{{end}}</a>
+                            <a class="page-link" href="{{ .URL }}" aria-label="First">{{ with $.Site.Params.pagination.firstIndicator }} {{ . | markdownify }} {{else}}<i class="iconfont icon-back-arrow-"></i>{{end}}</a>
                         </li>
                     {{ end }}
                 {{ end }}
@@ -54,7 +54,7 @@
                 {{ if not (eq .Site.Params.pagination.showLast false) }}
                     {{ with $pag.Last }}
                         <li class="page-item page-item-last">
-                            <a class="page-link" href="{{ .URL }}" aria-label="Last">{{ with $.Site.Params.pagination.lastIndicator }} {{ . | markdownify }} {{else}}<span aria-hidden="true">&raquo;&raquo;</span><span class="sr-only">Last</span>{{end}}</a>
+                            <a class="page-link" href="{{ .URL }}" aria-label="Last">{{ with $.Site.Params.pagination.lastIndicator }} {{ . | markdownify }} {{else}}<i class="iconfont icon-back-arrow-reverse"></i>{{end}}</a>
                         </li>
                     {{ end }}
                 {{ end }}

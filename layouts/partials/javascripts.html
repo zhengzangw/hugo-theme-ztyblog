@@ -24,7 +24,7 @@
 {{ $secureJSIsHome := $customishome | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJSIsHome.RelPermalink }}" integrity="{{ $secureJSIsHome.Data.Integrity }}"></script>
 
-{{ if .Site.Params.options.leonsans }}
+{{ if .Site.Params.leonsans }}
 <script type="text/javascript">
 let leon, canvas, ctx;
 

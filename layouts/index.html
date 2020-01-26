@@ -1,18 +1,18 @@
 {{ define "main" }}
 <main id="main" class="my-3">
     <section class="section-half-rounded">
-        <div class="jumbotron section-inner left-0 rounded-right {{ with $.Site.Params.options.homeblend -}} 
-        {{- if eq $.Site.Params.options.homeblend "green" -}} 
+        <div class="jumbotron section-inner left-0 rounded-right {{ with $.Site.Params.homeblend -}} 
+        {{- if eq $.Site.Params.homeblend "green" -}} 
             bg-gradient-green   
-        {{- else if eq $.Site.Params.options.homeblend "blue" -}} 
+        {{- else if eq $.Site.Params.homeblend "blue" -}} 
             bg-gradient-blue    
-        {{- else if eq $.Site.Params.options.homeblend "red" -}} 
+        {{- else if eq $.Site.Params.homeblend "red" -}} 
             bg-gradient-red
-        {{- else if eq $.Site.Params.options.homeblend "white" -}} 
+        {{- else if eq $.Site.Params.homeblend "white" -}} 
             bg-gradient-white
         {{- end -}} 
         {{- end }} overflow-hidden col-lg-9">
-            <img src="{{ .Site.Params.options.homeimage }}" alt="Image" class="img-as-bg blend-mode--multiply">
+            <img src="{{ .Site.Params.homeimage }}" alt="Image" class="img-as-bg blend-mode--multiply">
         </div>
         <div class="container text-center text-lg-left py-5">
             <div class="row">
@@ -20,7 +20,7 @@
                     <div class="card shadow-lg rounded-lg mb-0">
                         <div class="card-body px-5 py-6">
                             <h2 class="h1 font-weight-bold mb-3">
-                                {{ if not .Site.Params.options.leonsans }}
+                                {{ if not .Site.Params.leonsans }}
                                 <span class="text-highlight-primary">Welcome</span>
                                 {{ else }}
                                 <canvas id="welcome-canvas" class="welcome-canvas"></canvas>

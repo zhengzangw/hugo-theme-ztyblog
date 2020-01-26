@@ -22,12 +22,14 @@
                                 Atom Feed
                             </a>
                         </li>
-                        {{ if .Site.Params.options.enableGitInfo }}
+                        {{ if .Site.Params.gitinfo }}
                         <li class="nav-item" data-toggle="tooltip" data-html="true" title data-original-title="<div class='text-left'>
+                        {{ if .Site.Params.themecommitinfo }}
                             Theme Commit {{ substr .Site.Params.Themecommithash 0 8 }}
                             <br />
                             {{ .Site.Params.Themecommitcomment }}
                         <hr class='my-2 tiptool-hr'/>
+                        {{ end }}
                             Hugo Static Site Generator {{ hugo.Version }}
                             <br/>
                             Commit {{ substr .Site.Params.Binarycommithash 0 8 }} 
@@ -38,7 +40,7 @@
                         </div>">
                             <a class="nav-link" href="https://github.com/zhengzangw/hugo-site/" target="_blank">
                                 <i class="iconfont icon-git-commit-line"></i>
-                                {{ substr .Site.Params.Contentcommithash 0 8 }}
+                                {{ substr .Site.Params.binarycommithash 0 8 }}
                             </a>
                         </li>
                         {{ end }}
