@@ -22,6 +22,7 @@
                                 Atom Feed
                             </a>
                         </li>
+                        {{ if .Site.Params.options.enableGitInfo }}
                         <li class="nav-item" data-toggle="tooltip" data-html="true" title data-original-title="<div class='text-left'>
                             Theme Commit {{ substr .Site.Params.Themecommithash 0 8 }}
                             <br />
@@ -40,14 +41,21 @@
                                 {{ substr .Site.Params.Contentcommithash 0 8 }}
                             </a>
                         </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
-                                <i class="iconfont icon-creative-commons"></i>
-                                {{ .Site.Copyright -}}
-                            </a>
-                        </li>
-                        -->
+                        {{ end }}
+                        <ul class="nav align-items-center justify-content-center justify-content-md-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://beian.miit.gov.cn" target="_blank">
+                                    <i class="iconfont icon-ICPbeianfuwu"></i>
+                                    {{ .Site.Params.icp }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://beian.miit.gov.cn" target="_blank">
+                                    <i class="iconfont icon-beian"></i>
+                                    {{ .Site.Params.security }}
+                                </a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </div>
