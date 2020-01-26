@@ -16,11 +16,19 @@
       <div class="col col-12 col-lg-8">
         <div class="card border-0 shadow-none">
           <div class="card-body">
+            {{ $content := "" }}
             {{ if .Site.Params.options.mathmode }}
-              {{ .RawContent | replaceRE "_" "\\_" | markdownify | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+              {{ $content := .RawContent | replaceRE "_" "\\_" | markdownify }}
             {{ else }}
-              {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+              {{ $content := .Content }}
             {{ end }}
+            {{ if .Site.Params.options.linkicon }}
+              {{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
+            {{ end }}
+            {{ if .Site.Params.options.tablecenter }}
+              {{ $content = replaceRE "align=\"center\"" "class=\"text-center\"" $content }}
+            {{ end }}
+            {{ safeHTML $content }}
           </div>
           <div class="card-footer">
             <div class="post-nav">

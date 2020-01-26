@@ -37,11 +37,19 @@
 							</footer>
 						</div>
 						<div id="content" class="hl-h2">
+							{{ $content := "" }}
 							{{ if .Site.Params.options.mathmode }}
-								{{ .RawContent | replaceRE "_" "\\_" | markdownify | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+							  {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
 							{{ else }}
-								{{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` | safeHTML }}
+							  {{ $content = .Content }}
 							{{ end }}
+							{{ if .Site.Params.options.linkicon }}
+							  {{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
+							{{ end }}
+							{{ if .Site.Params.options.tablecenter }}
+							  {{ $content = replaceRE "align=\"center\"" "class=\"text-center\"" $content }}
+							{{ end }}
+							{{ safeHTML $content }}
 						</div>
 					</main>
 					<div class="d-none d-lg-block col-lg-3 bd-toc d-print-none">
