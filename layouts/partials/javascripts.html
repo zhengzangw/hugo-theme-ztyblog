@@ -33,9 +33,8 @@
 {{ $qrcode := resources.Get "js/qrcode.js" }}
 {{ $fuse := resources.Get "js/fuse.js" }}
 {{ $search := resources.Get "js/search.js" }}
-{{ $prism := resources.Get "js/prism.js" }}
 {{ $custom := resources.Get "js/custom.js" }}
-{{ $secureJS := slice $qrcode $search $fuse $custom $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $secureJS := slice $qrcode $search $fuse $custom | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
 {{/* Not Home */}}
