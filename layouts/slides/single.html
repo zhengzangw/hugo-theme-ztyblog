@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     {{ partial "favicon" . }}
-    <link rel="stylesheet" href="{{ relURL "css/katex.css" }}">
+    {{ partial "stylesheets" .}}
     <link rel="stylesheet" href="{{ relURL "css/wiki.css" }}" />
     <link rel="stylesheet" href="{{ relURL "css/slides.css" }}" />
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
@@ -56,10 +56,17 @@ class: remark-title
 # Thanks
 
     </textarea>
+    {{- /* remarkjs */ -}}
     <script defer src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script defer type="text/javascript" src="{{ relURL "js/qrcode.js" }}"></script>
-    <script defer type="text/javascript" src="{{ relURL "js/katex.js" }}"></script>
-    <script defer type="text/javascript" src="{{ relURL "js/auto-render.js" }}"></script>
+    {{- /* qrcode */ -}}
+    {{ $qrcode := resources.Get "js/qrcode.js" }}
+    {{ $secureJS := slice $qrcode | resources.Concat "qrcode.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
+    {{- /* katex */ -}}
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // generate the slides first, no need for promise

@@ -21,11 +21,9 @@
 {{- end -}}
 
 {{- /* katex */ -}}
-{{- if .Site.Params.useCDN -}}
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-{{- end -}}
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
 
 {{- /* Search */ -}}
 {{- if .Site.Params.enablesearch -}}
@@ -44,13 +42,12 @@
 {{ end }}
 {{ end }}
 
-{{- /* Local */ -}}
-{{ $qrcode := resources.Get "js/qrcode.js" }}
+{{- /* Custom */ -}}
 {{ $custom := resources.Get "js/custom.js" }}
-{{ $secureJS := slice $qrcode $custom | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $secureJS := slice $custom | resources.Concat "custom.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
-{{/* Not Home */}}
+{{- /* Not Home */ -}}
 {{ if not .IsHome }}
 <script type="text/javascript">
 //katex auto loaded

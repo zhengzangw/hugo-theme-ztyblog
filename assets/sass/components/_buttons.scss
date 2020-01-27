@@ -4,6 +4,8 @@
     padding: .75rem 1.75rem;
     position: relative;
     transition: all .2s ease;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .btn:hover {
@@ -18,8 +20,14 @@
 
 .btn-outline-secondary:hover {
     color: #273444;
-    border-color: #eff2f7;
-    background-color: #eff2f7
+    border-color: #c5cfe2;
+    background-color: #cdd6e6
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show>.btn-outline-secondary.dropdown-toggle {
+    color: #273444;
+    border-color: #cdd6e6;
+    background-color: #cdd6e6
 }
 
 .btn-sm {
