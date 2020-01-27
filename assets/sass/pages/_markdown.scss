@@ -401,3 +401,24 @@ table {
     right: 1.2em;
   }
 }
+
+#content table {
+  font-size: 0.6rem;
+}
+
+#content td, #content th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#content tr:nth-child(even){background-color: #f2f2f2;}
+
+#content tr:hover {background-color: #ddd;}
+
+#content th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
