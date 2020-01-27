@@ -179,4 +179,8 @@ window.onload = () => {
 </script>
 {{- end -}}
 
+{{- if .Site.Params.comments -}}
+<script id="dsq-count-scr" src={{.Site.Params.countjs}} async></script>
+{{- end -}}
+
 {{ end }}
