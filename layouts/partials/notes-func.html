@@ -1,9 +1,26 @@
 <div class="btn-group-vertical w-100 my-3">
+    {{ if .Site.Params.updatelist }}
     <a class="btn btn-outline-secondary text-dark w-100 p-2" href="{{ .Site.Params.updatelisturl }}" target="_blank">
         <i class="iconfont icon-LC_icon_list_line"></i><br />待更新列表
     </a>
-    <a class="btn btn-outline-secondary text-dark w-100 p-2" href="mailto:{{ .Site.Params.mail }}"
+    {{ end }}
+
+    {{ if .Site.Params.sendcorrect }}
+    <a class="btn btn-outline-secondary text-dark w-100 p-2" href="mailto:{{ .Site.Params.sendcorrecturl }}"
         target="_blank">
         <i class="iconfont icon-discussion"></i><br />纠错与咨询
     </a>
+    {{ end }}
+    
+    {{ if not .Parent.IsHome }}
+    {{ if .IsPage }}
+        <a class="btn btn-outline-secondary text-dark w-100 p-2" href="#" onclick="window.print()">
+            <i class="iconfont icon-dayin"></i><br />打印本页
+        </a>
+    {{ else }}
+        <a class="btn btn-outline-secondary text-dark w-100 p-2" href="#" onclick="printAllNotes()">
+            <i class="iconfont icon-dayin"></i><br />打印全部
+        </a>
+    {{ end }}
+    {{ end }}
 </div>

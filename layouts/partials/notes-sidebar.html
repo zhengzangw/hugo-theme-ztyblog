@@ -32,20 +32,8 @@
             {{ else if eq .Params.Status "focus" }}
                 <i class="iconfont icon-target"></i>
             {{ else }}
-            {{ with .Params.kind }}
-                {{ if eq . "math" }}
-                    <span class="icontext">M</span>
-                {{ else if eq . "physics" }}
-                    <span class="icontext">P</span>
-                {{ else if eq . "computer" }}
-                    <span class="icontext">C</span>
-                {{ else if eq . "algorithm" }}
-                    <span class="icontext">A</span>
-                {{ else if eq . "language" }}
-                    <span class="icontext">L</span>
-                {{ else }}
-                    <span class="icontext">O</span>
-                {{ end }}
+            {{ with .Params.Letter }}
+                <span class="icontext">{{.}}</span>
             {{ end }}
             {{ end }}
             {{ .Title }}

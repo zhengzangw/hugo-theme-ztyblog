@@ -20,19 +20,16 @@
 							<h2>{{ .Title }}</h2>
 							<footer>
 								<span>
-									<i class="fad fa-calendar-alt mr-2"></i>
+									<i class="iconfont icon-NewFile mr-2"></i>
 									{{ dateFormat .Site.Params.dateformFull .Date.Local }}
 								</span> <br />
 								<span>
-									<i class="fad fa-calendar-edit mr-2"></i>
+									<i class="iconfont icon-modify mr-2"></i>
 									{{ dateFormat .Site.Params.dateformFull .Lastmod.Local }}
 								</span> <br />
 								<span>
-									<i class="fad fa-copyright mr-2"></i>
+									<i class="iconfont icon-copyright mr-2"></i>
 									{{ .Site.Copyright }}
-									<a class="float-right" href="#" onclick="window.print()">
-											打印本页
-									</a>
 								</span>
 							</footer>
 						</div>
@@ -54,7 +51,31 @@
 					</main>
 					<div class="d-none d-lg-block col-lg-3 bd-toc d-print-none">
 						{{ partial "notes-func" . }}
+						<h4 class="card-title pb-0">目录</h4>
 						{{ .TableOfContents }}
+						
+						{{ if .Site.Params.comments }}
+						<div id="disqus_thread"></div>
+						  <script>
+						  /**
+						  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+						  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+						  /*
+						  var disqus_config = function () {
+						  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+						  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						  };
+						  */
+						  (function() { // DON'T EDIT BELOW THIS LINE
+						  var d = document, s = d.createElement('script');
+						  s.src = {{ .Site.Params.embedjs }};
+						  s.setAttribute('data-timestamp', +new Date());
+						  (d.head || d.body).appendChild(s);
+						  })();
+						  </script>
+						  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>                  
+						</div>
+						{{ end }}
 					</div>
 				</div>
 			</div>
