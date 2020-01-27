@@ -1,9 +1,11 @@
 +++
 title = "Friend's Links"
-+++
-
-Example
 [[friends]]
-    name = "Fancy Pei"
-    icon = "fancypei.jpg"
-    url = "https://fancypei.github.io"
+    name = "Your firends 1"
+    icon = "name.jpg"
+    url = ""
+[[friends]]
+    name = "Your firends 2"
+    icon = "name.jpg"
+    url = ""
++++
