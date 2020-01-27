@@ -4,30 +4,35 @@
     <div class="row row-grid justify-content-center">
         <div class="col col-12">
             {{ range (.Paginate (.Pages.GroupByDate "2006-01")).PageGroups }}
-            <div class="row">
-                <div class="col">
-                    <h1 id="{{.Key}}">{{.Key}}</h1>
-                    {{ range .Pages }}
-                    <div class="card bg-soft-secondary">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h5>{{ .Title }}</h5>
-                                    <p>{{ .Summary }}</p>
-                                </div>
-                                <div
-                                    class="col-12 col-md-4 mt-4 mt-md-0 pr-4 pb-3 d-flex align-items-end justify-content-md-end">
-                                    <a href="{{.Permalink}}">
-                                        <span class="btn-inner--text">阅读更多</span>
-                                        <span class="btn-inner--icon">
-                                            <i class="iconfont icon-right-arrow"></i>
-                                        </span>
-                                    </a>
-                                </div>
+            <div class="row mt-3">
+                <div class="col d-flex flex-column flex-md-row">
+                    <div class="mt-3 mr-4">
+                        <h1 id="{{.Key}}">{{.Key}}</h1>
+                    </div>
+                    <div class="w-100">
+                        {{ range .Pages }}
+                        <div class="card shadow-none">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ .Title }}</h5>
+                                {{ with .Params.previewimage }}
+                                    <img class="preview-img" src="{{ . | safeURL }}"/>
+                                {{ end }}
+                                <p class="card-text">{{ .Summary }}</p>
+                                <p class="card-text">
+                                    {{ dateFormat .Site.Params.dateformFull .Date.Local }}
+                                    <span class="float-right btn-inner--text">
+                                        <a href="{{.Permalink}}">
+                                            阅读更多
+                                            <span class="btn-inner--icon">
+                                                <i class="iconfont icon-right-arrow"></i>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </p>
                             </div>
                         </div>
+                        {{ end }}
                     </div>
-                    {{ end }}
                 </div>
             </div>
             {{ end }}

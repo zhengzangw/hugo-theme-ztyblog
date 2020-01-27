@@ -2,12 +2,15 @@
 {{ partial "single-header.html" . }}
 <div id="content" class="my-3">
   <div class="container">
+    {{ with .Params.banner }}
+      <img src="{{ . | safeURL }}"/>
+    {{ end }}
     <div class="row row-grid justify-content-center">
       {{ if .TableOfContents }}
       <div class="col col-12 col-lg-4 d-print-none">
-        <div id="toc" class="card w-100">
-          <h4 class="card-header">目录</h4>
+        <div id="toc" class="card w-100 shadow-none">
           <div class="card-body">
+            <h4 class="card-title pb-0">目录</h4>
             {{ .TableOfContents }}
           </div>
         </div>
@@ -30,7 +33,7 @@
             {{ end }}
             {{ safeHTML $content }}
           </div>
-          <div class="card-footer">
+          <div class="card-footer d-print-none">
             <div class="post-nav">
               {{ with .PrevInSection }}
               <a class="next-post" href="{{ .Permalink }}">

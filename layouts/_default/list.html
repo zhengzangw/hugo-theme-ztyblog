@@ -4,7 +4,7 @@
     <div class="row row-grid justify-content-center">
         <div class="col col-12">
             {{ range .Pages.GroupByDate "2006-01"}}
-            <div class="row">
+            <div class="row flex-md-row">
                 <div class="col">
                     <h1 id="{{.Key}}">{{.Key}}</h1>
                     {{ range .Pages }}

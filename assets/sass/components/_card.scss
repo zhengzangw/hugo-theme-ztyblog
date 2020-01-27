@@ -11,8 +11,21 @@
     margin-bottom: 30px;
 }
 
+.card-title {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+}
+
+.card-text {
+    font-size: medium;
+}
+
 .card-body {
     padding: 1.5rem;
     color: #8492a6;
     flex: 1 1 auto;
+}
+
+.rounded {
+    border-radius: 1rem!important;
 }

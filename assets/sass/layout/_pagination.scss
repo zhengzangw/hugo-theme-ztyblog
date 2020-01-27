@@ -3,16 +3,24 @@
 }
 
 .page-item-number .page-link {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
     font-size: 12px;
-    line-height: 1.42;
     border-radius: 15px;
 }
 
 .page-item-ellipse {
     font-size: 1.015625rem;
     line-height: 1.5;
+}
+
+@media (min-witdh: 768px){
+    .flex-md-row {
+        flex-direction: row!important;
+    }
+}
+
+.page-item .page-link, .page-item>span {
+    margin: 0 3px;
+    text-align: center;
+    border-radius: .2rem;
+    font-size: medium!important;
 }

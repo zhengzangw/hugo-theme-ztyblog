@@ -3,18 +3,30 @@
     <nav class="{{ .Section }}-pagination" aria-label="{{ .Section }} navigation">
         <ul class="pagination {{- with .Params.pagination.class | default "pagination justify-content-center" }} {{ . }} {{- end }}">
             {{ if (and (not $pag.HasPrev) (eq $.Site.Params.pagination.showBeginEnd false)) }}
-                
+            
             {{ else }}
                 {{ if not (eq .Site.Params.pagination.showFirst false) }}
                     {{ with $pag.First }}
                         <li class="page-item page-item-first">
-                            <a class="page-link" href="{{ .URL }}" aria-label="First">{{ with $.Site.Params.pagination.firstIndicator }} {{ . | markdownify }} {{else}}<i class="iconfont icon-back-arrow-"></i>{{end}}</a>
+                            <a class="page-link" href="{{ .URL }}" aria-label="First">
+                            {{ with $.Site.Params.pagination.firstIndicator }} 
+                                {{ . | markdownify }}
+                            {{else}}
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            {{end}}
+                            </a>
                         </li>
                     {{ end }}
                 {{ end }}
                 {{ if not (eq .Site.Params.pagination.showPrevious false) }}
                     <li class="page-item page-item-previous {{- if not $pag.HasPrev }} disabled {{- end }}">
-                        <a class="page-link" href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}" aria-label="Previous" tabindex="-1">{{ with $.Site.Params.pagination.previousIndicator }} {{ . | markdownify }} {{else}}<span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span>{{end}}</a>
+                        <a class="page-link" href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}" aria-label="Previous" tabindex="-1">
+                        {{ with $.Site.Params.pagination.previousIndicator }} 
+                            {{ . | markdownify }} 
+                        {{else}}
+                            <span aria-hidden="true">&laquo;</span>
+                        {{end}}
+                        </a>
                     </li>
                 {{ end }}
             {{ end }}
@@ -48,13 +60,25 @@
             {{ else }}
                 {{ if not (eq .Site.Params.pagination.showNext false) }}
                     <li class="page-item page-item-next {{- if not $pag.HasNext }} disabled {{- end }}">
-                        <a class="page-link" href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}" aria-label="Next">{{ with $.Site.Params.pagination.nextIndicator }} {{ . | markdownify }} {{else}}<span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span>{{end}}</a>
+                        <a class="page-link" href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}" aria-label="Next">
+                        {{ with $.Site.Params.pagination.nextIndicator }}
+                            {{ . | markdownify }}
+                        {{else}}
+                            <span aria-hidden="true">&raquo;</span>
+                        {{end}}
+                        </a>
                     </li> 
                 {{ end }}
                 {{ if not (eq .Site.Params.pagination.showLast false) }}
                     {{ with $pag.Last }}
                         <li class="page-item page-item-last">
-                            <a class="page-link" href="{{ .URL }}" aria-label="Last">{{ with $.Site.Params.pagination.lastIndicator }} {{ . | markdownify }} {{else}}<i class="iconfont icon-back-arrow-reverse"></i>{{end}}</a>
+                            <a class="page-link" href="{{ .URL }}" aria-label="Last">
+                            {{ with $.Site.Params.pagination.lastIndicator }} 
+                                {{ . | markdownify }}
+                            {{else}}
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            {{end}}
+                            </a>
                         </li>
                     {{ end }}
                 {{ end }}
@@ -63,4 +87,5 @@
         </ul> 
     </nav>
 {{ end }}
+
 <!--Refer to https://discourse.gohugo.io/t/bootstrap-4-pagination-some-added-functionality/11393-->
