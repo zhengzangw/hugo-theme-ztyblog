@@ -8,11 +8,6 @@ hasCJKLanguage = true
 # Theme
 theme="ztyblog"
 
-# Code Highlight Setting
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = false
-pygmentsStyle = "colorful"
-
 # Folder Location
 archetypeDir = "archetypes"
 contentDir   = "content"
@@ -26,7 +21,7 @@ buildFuture  = false
 buildExpored = false
 canonifyURLs = true
 enableRobotsTXT = true
-enableGitInfo   = false
+enableGitInfo   = true
 enableEmoji     = true
 enableMissingTranslationPlaceholders = false
 disableRSS     = false
@@ -38,30 +33,30 @@ Paginate = 10 # Number of Posts per page for blog
 copyright="CC BY-NC 4.0" # Copyright Protocol for your site
 
 [author]
-    name = "Zangwei Zheng"
+    name = "Zangwei Zheng" # Your name
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+    home = ["HTML", "RSS", "JSON"]
 
-# Markdown Render Settings
+# Markdown Render Settings, see https://gohugo.io/getting-started/configuration-markup for detailed explanation
 [markup]
     defaultMarkdownHandler = "goldmark"
     [markup.goldmark]
         [markup.goldmark.extensions]
-        definitionList = true
-        footnote = true
-        linkify = true
-        strikethrough = true
-        table = true
-        taskList = true
-        typographer = false
+            definitionList = true
+            footnote = true
+            linkify = true
+            strikethrough = true
+            table = true
+            taskList = true
+            typographer = false
         [markup.goldmark.parser]
-        attribute = true
-        autoHeadingID = true
-        autoHeadingIDType = "github"
+            attribute = true
+            autoHeadingID = true
+            autoHeadingIDType = "github"
         [markup.goldmark.renderer]
-        hardWraps = false
-        unsafe = false
-        xHTML = false
+            hardWraps = false
+            unsafe = false # Render HTML in Markdown
+            xHTML = false
     # blackfriday for legacy
     [markup.blackfriday]
         hrefTargetBlank = true
@@ -73,19 +68,49 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
         startLevel = 2
     [markup.highlight]
         codeFences = true
-        guessSyntax = false
+        guessSyntax = true
         hl_Lines = ""
         lineNoStart = 1
         lineNos = false
         lineNumbersInTable = true
         noClasses = true
-        style = "monokai"
+        style = "tango"
         tabWidth = 4
 
 [params]
-    dateformFull = "2006-01-02 15:04 CST" # Date Formata
+    dateformFull = "2006-01-02 15:04 CST" # Date Format
     description = "Zangwei Zheng's Site" # Description for your site
     keywords = "blog" # Keyworks for searching engine
+    useCDN = true # whether use CDN for css/js, true Recommended, if not, use npm and ./load.js to add static file
+
+    # Markdown Render
+    mathmode = true # Enable "_" render in mathmode in markdown
+    linkicon = true # Add link icon for h1-h6
+    tablecenter = true # Correct text-center table align
+
+    # Home Page
+    homeimage = "/images/boat.jpg" # Image URL for home page
+    homeblend = "blue" # Image blend color: blank, blue, green, red, white
+    themecommitinfo = true
+    gitinfo = true
+    copyright = "2017 - 2019, Zangwei Zheng. All rights reserved." # Copyright
+    icp = "waiting"
+    security = "waiting"
+    leonsans = false # Enable animate Welcome
+
+    # 404 Page
+    notfoundimage = "/images/dessert.jpg"
+    notfoundblend = "red"
+
+    # Comments
+    comments = false # whether use disqus comment plugin
+    disqusname = "your site name on disqus"
+
+    # Notes
+    updatelist = true
+    updatelisturl = "https://list.html" # Your list URL
+    sendcorrect = true
+    sendcorrecturl = "zzw@smail.nju.edu.cn"
 
     # Git Info
     ## Git info for whole site
@@ -99,31 +124,12 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
 	## Git info for site binary
 	binarycommithash = "1b12c6b1f006eaf01ab6cc3979d89d7353c28f36"
 	binarycommitdate = "Sun Jan 26 19:08:02 2020 +0800"
-
-    # Home Page
-    homeimage = "/images/boat.jpg" # Image URL for home page
-    homeblend = "blue" # Image blend color: blank, blue, green, red, white
-    themecommitinfo = true
-    gitinfo = true
-    copyright = "2017 - 2019, Zangwei Zheng. All rights reserved." # Copyright
-    icp = "waiting"
-    security = "waiting"
-    leonsans = false # Enable animate Welcome
     
-    # Notes
-    updatelisturl = "https://github.com/zhengzangw/hugo-site/issues"
-    mail = "zzw@smail.nju.edu.cn"
-
     # Bangumi
-    bangumiseasonstart = "2018"
+    bangumiseasonstart = "2018" # After which year, group by season instead of year
 
-    # 404 Page
-    notfoundimage = "/images/dessert.jpg"
-    notfoundblend = "red"
-    # Markdown Render
-    mathmode = true # Enable "_" render in mathmode in markdown
-    linkicon = true # Add link icon for h1-h6
-    tablecenter = true # Correct text-center table align
+    # Search
+    enablesearch = true # Enable Search Module; Also add search in menu
 
     [[params.social]]
         identifier = "github"
@@ -140,8 +146,6 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
         showFirst = true
         showPrevious = true
         showBeginEnd = true
-        previousIndicator = "Previous"
-        nextIndicator = "Next"
         pagesBetweenActive = 2
 
 [menus]

@@ -1,16 +1,15 @@
-# theme.toml template for a Hugo theme
-# See https://github.com/gohugoio/hugoThemes#themetoml for an example
-
 name = "ztyblog"
 license = "MIT"
 licenselink = "https://github.com/zhengzangw/hugo-theme-ztyblog/blob/master/LICENSE"
-description = ""
+description = "A full-featured theme for Hugo. All in one."
 homepage = "https://github.com/zhengzangw/hugo-theme-ztyblog"
 tags = ["blog"]
-features = []
-min_version = "0.41"
+features = ["blog"]
+min_version = 0.60
 
-author = [
-  { name = "Zangwei Zheng", homepage="https://github.com/zhengzangw/" },
-  { name = "Tianyun Zhang", homepage="https://github.com/doowzs/" }
-]
+[[author]]
+  name = "Zangwei Zheng"
+  homepage="https://github.com/zhengzangw/"
+[[author]]
+  name = "Tianyun Zhang"
+  homepage="https://github.com/doowzs/"
