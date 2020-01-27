@@ -34,4 +34,32 @@
   </div>
 </script>
 {{ end }}
+
+{{- /* jQuery */ -}}
+{{- if .Site.Params.useCDN -}}
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+{{- else -}}
+    {{- $jquery := resources.Get "js/jquery.min.js" -}}
+    {{- $securejquery := slice $jquery | resources.Concat "jquery.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securejquery.RelPermalink }}" integrity="{{ $securejquery.Data.Integrity }}"></script>
+{{- end -}}
+
+{{- /* Search */ -}}
+{{- if .Site.Params.useCDN -}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+    {{- $search := resources.Get "js/search.js" -}}
+    {{- $securesearch := slice $search | resources.Concat "search.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securesearch.RelPermalink }}" integrity="{{ $securesearch.Data.Integrity }}"></script>
+{{- else -}}
+    {{ $fuse := resources.Get "js/fuse.js" }}
+    {{ $mark := resources.Get "js/mark.js" }}
+    {{ $search := resources.Get "js/search.js" }}
+    {{- $securesearch := slice $mark $fuse $search | resources.Concat "search.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securesearch.RelPermalink }}" integrity="{{ $securesearch.Data.Integrity }}"></script>
+{{ end }}
+
 {{ end }}

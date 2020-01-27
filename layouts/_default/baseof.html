@@ -11,10 +11,9 @@
     {{ block "main" . }}{{ end }}
 
     {{ if not (eq .Params.Layout "search" ) }}
-    {{ partial "footer.html" . }}
+        {{ partial "footer.html" . }}
+        {{ partial "javascripts.html" . }}   
     {{ end }}
-
-    {{ partial "javascripts.html" . }}
 </body>
 
 </html>
