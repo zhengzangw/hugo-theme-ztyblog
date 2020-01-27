@@ -35,16 +35,18 @@
 						</div>
 						<div id="content" class="hl-h2">
 							{{ $content := "" }}
-							{{ if .Site.Params.mathmode }}
-							  {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
+							{{ $mathmode := .Site.Params.mathmode }}
+							{{ $mathmode = not .Params.disablemathmode }}
+							{{ if $mathmode }}
+							{{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
 							{{ else }}
-							  {{ $content = .Content }}
+							{{ $content = .Content }}
 							{{ end }}
 							{{ if .Site.Params.linkicon }}
-							  {{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
+							{{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
 							{{ end }}
 							{{ if .Site.Params.tablecenter }}
-							  {{ $content = replaceRE "align=\"center\"" "class=\"text-center\"" $content }}
+							{{ $content = replaceRE "align=\"center\"" "class=\"text-center\"" $content }}
 							{{ end }}
 							{{ safeHTML $content }}
 						</div>

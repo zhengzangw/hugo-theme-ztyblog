@@ -1,38 +1,49 @@
 {{ define "main" }}
-{{ partial "list-header.html" . }}
+<div class="container rounded bg-gradient-secondary">
+  <div class="row my-lg-5">
+    <div class="col p-5 text-center">
+      <h1>{{ .Title }}</h1>
+      <div>
+        <p>
+          <i class="iconfont icon-modify mr-2"></i>
+          {{ dateFormat .Site.Params.dateformFull .Lastmod.Local }}
+        </p>
+      </div>
+      <a href="../" class="tongue tongue-secondary tongue-bottom d-print-none">
+        <i class="iconfont icon-angle-up-o"></i>
+      </a>
+    </div>
+  </div>
+</div>
 <div id="content" class="my-3">
-    <div class="container">
-        <div class="row row-grid justify-content-center">
-            <div class="col col-lg-8">
-                <div class="card border-0 shadow-none">
-                    <div class="card-body">
-
-                        <div class="alert alert-info" role="alert">
-                            Listed in lexicographical order. (Ladies first.)
-                        </div>
-
-                        <hr class="post-begin">
-
-                        <div class="friends-group">
-                            <ul class="friends-list">
-
-                                {{ range .Params.Friends }}
-                                <li class="friends-item">
-                                    <a target="_blank" href="{{ .url }}">
-                                        {{ with .icon }}
-                                        <img class="avatar-sm mr-2" src="/images/friends/{{ . }}">
-                                        {{ end }}
-                                        {{ .name }}'s Blog
-                                    </a>
-                                </li>
-                                {{ end }}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row row-grid justify-content-center">
+      <div class="col col-lg-8">
+        <div class="card border-0 shadow-none">
+          <div class="card-body">
+            <div class="alert alert-info" role="alert">
+              Listed in lexicographical order. (Ladies first.)
             </div>
 
+            <hr class="post-begin" />
+
+            <div class="friends-group">
+              <ul class="friends-list">
+                {{ range .Params.Friends }}
+                <li class="friends-item">
+                  <a target="_blank" href="{{ .url }}">
+                    {{ with .icon }}
+                    <img class="avatar-sm mr-2" src="/images/friends/{{ . }}" />
+                    {{ end }} {{ .name }}'s Blog
+                  </a>
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 {{ end }}

@@ -1,6 +1,9 @@
 {{- /* jQuery */ -}}
 {{- if .Site.Params.useCDN -}}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
 {{- else -}}
     {{- $jquery := resources.Get "js/jquery.min.js" -}}
     {{- $securejquery := slice $jquery | resources.Concat "jquery.js" | resources.Minify | resources.Fingerprint "sha512" -}}
@@ -22,19 +25,29 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
-{{- else -}}
-    {{- $katex := resources.Get "js/katex.min.js" -}}
-    {{- $autorender := resources.Get "js/auto-render.min.js" -}}
-    {{- $securekatex := slice $katex $autorender | resources.Concat "katex.js" | resources.Minify | resources.Fingerprint "sha512" -}}
-    <script type="text/javascript" src="{{ $securekatex.RelPermalink }}" integrity="{{ $securekatex.Data.Integrity }}"></script>
 {{- end -}}
+
+{{- /* Search */ -}}
+{{- if .Site.Params.enablesearch -}}
+{{- if .Site.Params.useCDN -}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+    {{- $search := resources.Get "js/search.js" -}}
+    {{- $securesearch := slice $search | resources.Concat "search.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securesearch.RelPermalink }}" integrity="{{ $securesearch.Data.Integrity }}"></script>
+{{- else -}}
+    {{ $fuse := resources.Get "js/fuse.js" }}
+    {{ $mark := resources.Get "js/mark.js" }}
+    {{ $search := resources.Get "js/search.js" }}
+    {{- $securesearch := slice $mark $fuse $search | resources.Concat "search.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    <script type="text/javascript" src="{{ $securesearch.RelPermalink }}" integrity="{{ $securesearch.Data.Integrity }}"></script>
+{{ end }}
+{{ end }}
 
 {{- /* Local */ -}}
 {{ $qrcode := resources.Get "js/qrcode.js" }}
-{{ $fuse := resources.Get "js/fuse.js" }}
-{{ $search := resources.Get "js/search.js" }}
 {{ $custom := resources.Get "js/custom.js" }}
-{{ $secureJS := slice $qrcode $search $fuse $custom | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $secureJS := slice $qrcode $custom | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
 {{/* Not Home */}}

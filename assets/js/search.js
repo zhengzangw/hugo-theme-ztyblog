@@ -12,7 +12,8 @@ var fuseOptions = {
   keys: [
     {name:"title",weight:0.8},
     {name:"contents",weight:0.5},
-    {name:"tags",weight:0.3}
+    {name:"tags",weight:0.3},
+    {name:"categories",weight:0.3}
   ]
 };
 
@@ -22,7 +23,7 @@ if(searchQuery){
   $("#search-query").val(searchQuery);
   executeSearch(searchQuery);
 }else {
-  $('#search-results').append("<div class=\"col text-center ind-text\"><h1>Please enter a word or phrase above</h1></div>");
+  $('#search-results').append("<h5 class='text-center'>Please enter a word or phrase above</h5>");
 }
 
 
@@ -36,7 +37,7 @@ function executeSearch(searchQuery){
     if(result.length > 0){
       populateResults(result);
     }else{
-      $('#search-results').append("<div class=\"col text-center ind-text ind-text-danger\"><h1>No matches founded</h1></div>");
+      $('#search-results').append("<h5 class='text-center'>No matches found</h5>");
     }
   });
 }

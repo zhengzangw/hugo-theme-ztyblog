@@ -20,7 +20,11 @@
         <div class="card border-0 shadow-none">
           <div class="card-body">
             {{ $content := "" }}
-            {{ if .Site.Params.mathmode }}
+            {{ $mathmode := .Site.Params.mathmode }}
+            {{ with .Params.mathmode }}
+              {{ $mathmode = . }}
+            {{ end }}
+            {{ if $mathmode }}
               {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
             {{ else }}
               {{ $content = .Content }}

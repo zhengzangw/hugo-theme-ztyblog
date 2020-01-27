@@ -11,3 +11,4 @@ cp ./node_modules/jquery/dist/jquery.min.js ./assets/js/jquery.min.js
 cp ./node_modules/fuse.js/dist/fuse.js ./assets/js/fuse.js
 cp ./node_modules/katex/dist/katex.min.js ./assets/js/katex.min.js
 cp ./node_modules/katex/dist/contrib/auto-render.min.js ./assets/js/auto-render.min.js
+cp ./node_modules/mark.js/dist/mark.js ./assets/js/mark.js

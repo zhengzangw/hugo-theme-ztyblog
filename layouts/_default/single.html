@@ -6,7 +6,21 @@
       <div class="col col-12 col-lg-8">
         <div class="card border-0 shadow-none">
           <div class="card-body">
-            {{ .Content }}
+            {{ $content := "" }}
+            {{ $mathmode := .Site.Params.mathmode }}
+            {{ $mathmode = not .Params.disablemathmode }}
+            {{ if $mathmode }}
+              {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
+            {{ else }}
+              {{ $content = .Content }}
+            {{ end }}
+            {{ if .Site.Params.linkicon }}
+              {{ $content = replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" `${1}<a href="#${2}" class="anchor" aria-hidden="true"><i class="iconfont icon-link"></i></a>${3}` $content  }}
+            {{ end }}
+            {{ if .Site.Params.tablecenter }}
+              {{ $content = replaceRE "align=\"center\"" "class=\"text-center\"" $content }}
+            {{ end }}
+            {{ safeHTML $content }}
           </div>
         </div>
       </div>
