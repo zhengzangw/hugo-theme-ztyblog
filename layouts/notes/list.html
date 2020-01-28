@@ -25,13 +25,13 @@
                                     {{ with .Params.textbook }}
                                     <span>
                                         <i class="iconfont icon-book1 mr-2"></i>
-                                        {{ . }}
+                                        {{ . | markdownify }}
                                     </span> <br />
                                     {{ end }}
                                     {{ with .Params.course }}
                                     <span>
                                         <i class="iconfont icon-chalkboard-teacher mr-2"></i>
-                                        {{ . }}
+                                        {{ . | markdownify }}
                                     </span> <br />
                                     {{ end }}
                                     {{ with .Params.version }}
