@@ -1,5 +1,6 @@
 +++
 title = "追番列表"
+layout = "bangumi"
 [[year]]
     year = "2019 10月"
     [[year.entry]]
