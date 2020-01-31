@@ -176,21 +176,32 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
         url = "/bangumi/"
         pre = "icon-bilibili-line"
         post = "追番列表"
+        weight = 1
     [[menu.second]]
         identifier = "friends"
         name = "friends"
         url = "/friends/"
         pre = "icon-friend"
         post = "友链"
+        weight = 2
     [[menu.second]]
         identifier = "resources"
         name = "resources"
         url = "/slides/"
         pre = "icon-resources"
         post = "资源"
+        weight = 3
     [[menu.second]]
         identifier = "search"
         name = "Search"
         url = "/search/"
         pre = "icon-search"
         post = "站内搜索"
+        weight = 4
+    [[menu.second]]
+        identifier = "portal"
+        name = "Portal"
+        url = "/portal/"
+        pre = "icon-iconentrance"
+        post = "自定门户"
+        weight = 5

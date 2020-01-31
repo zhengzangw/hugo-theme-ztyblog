@@ -37,6 +37,7 @@ We provide specific rendering for following modules, for each you can find examp
 * Friends: you can add your friend links here
 * About: you can add your infomation here
 * Search: search the whole site
+* Portal: a portal for your favourite links
 
 ## How to start
 
@@ -113,4 +114,4 @@ If you spot any bugs, please use [Issue Tracker](https://github.com/zhengzangw/h
 
 ## License
 
-The theme is released under the MIT License. Check the original theme license for additional licensing information.
+The theme is released under the MIT License.
