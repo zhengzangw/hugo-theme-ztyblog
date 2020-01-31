@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<div id="content" class="my-3">
+  <div class="card-dwg-hrefc">
+    {{ range .Params.portal }}
+    <div class="card-dwg-title">
+      <h4>{{ .name }}</h4>
+    </div>
+    <div class="card-dwg-content">
+      {{ range .sites }}
+      <a class="card-dwg-href" href="{{ .url }}" target="_blank">
+        <div class="card-dwg-href-div">
+          <div
+            class="card-dwg-href-img"
+            style="background-image: url('{{ relURL .icon }}');"
+          ></div>
+          <div class="card-dwg-href-name">{{.name}}</div>
+          <div class="card-dwg-href-abstract">{{.describe}}</div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}

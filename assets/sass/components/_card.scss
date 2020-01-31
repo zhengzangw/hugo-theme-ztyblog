@@ -29,3 +29,101 @@
 .rounded {
     border-radius: 1rem!important;
 }
+
+.card-dwg-hrefc {
+    height: auto;
+    width: auto;
+    padding: 0 50px;
+    margin-top: 50px;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    a {
+        text-decoration: none;
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.card-dwg-title {
+    height: auto;
+    font-size: 16px;
+    text-align: left;
+    clear: both;
+}
+
+.card-dwg-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-dwg-href {
+    width: 25%;
+    height: 80px;
+    margin-bottom: 20px;
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 850px){
+        width: 50%;
+    }
+}
+
+.card-dwg-href-div {
+    padding: 10px 15px;
+    height: 80px;
+    margin-right: 15px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-dwg-href-img {
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-right: 8px;
+    display: inline-block;
+    margin-top: 11px;
+    float: left;
+}
+
+.card-dwg-href-name {
+    width: calc(100% - 45px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color .3s ease-out;
+    float: left;
+    margin-top: 7px;
+    margin-left: 5px;
+    color: #242424;
+}
+
+.card-dwg-href-abstract {
+    width: calc(100% - 45px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color .3s ease-out;
+    float: left;
+    margin-left: 5px;
+    color: #929292;
+}
+
+.card-dwg-href-div:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-dwg-href:hover .card-dwg-href-name {
+    color: #478cdc;
+}
