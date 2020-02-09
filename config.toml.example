@@ -81,7 +81,7 @@ copyright="CC BY-NC 4.0" # Copyright Protocol for your site
     dateformFull = "2006-01-02 15:04 CST" # Date Format
     description = "Zangwei Zheng's Site" # Description for your site
     keywords = "blog" # Keyworks for searching engine
-    useCDN = true # whether use CDN for css/js, true Recommended, if not, use npm and ./load.js to add static file
+    useCDN = true # whether use CDN for css/js, true Recommended, if not, use npm and ./load.sh to add static file
 
     # Markdown Render
     mathmode = true # Enable "_" render in mathmode in markdown
