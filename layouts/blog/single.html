@@ -24,7 +24,6 @@
             {{ if isset .Params "mathmode" }}
               {{ $mathmode = .Params.mathmode }}
             {{ end }}
-            <p>{{.Params.mathmode }}</p>
             {{ if $mathmode }}
               {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
             {{ else }}
