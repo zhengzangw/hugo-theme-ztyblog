@@ -8,7 +8,9 @@
           <div class="card-body">
             {{ $content := "" }}
             {{ $mathmode := .Site.Params.mathmode }}
-            {{ $mathmode = not .Params.disablemathmode }}
+            {{ if isset .Params "mathmode" }}
+              {{ $mathmode = .Params.mathmode }}
+            {{ end }}
             {{ if $mathmode }}
               {{ $content = .RawContent | replaceRE "_" "\\_" | markdownify }}
             {{ else }}
